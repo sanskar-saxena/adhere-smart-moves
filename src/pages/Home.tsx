@@ -43,10 +43,10 @@ const Home = () => {
         <div className="flex items-center gap-6">
           <ScoreRing score={74} />
           <div className="flex-1 grid grid-cols-2 gap-5">
-            <StatBlock label="Calories Left" value="820" unit="cal" variant="success" />
-            <StatBlock label="Protein Left" value="45" unit="g" variant="warning" />
-            <StatBlock label="Meals Today" value="2" subtitle="of 4 planned" />
-            <StatBlock label="Water" value="1.8" unit="L" subtitle="target: 3L" />
+            <StatBlock label="Cal. Budget Left" value="820" unit="cal" variant="success" />
+            <StatBlock label="Protein Gap" value="45" unit="g" variant="warning" />
+            <StatBlock label="Meals Logged" value="2" subtitle="of 4 planned" />
+            <StatBlock label="Hydration" value="1.8" unit="L" subtitle="target: 3L" />
           </div>
         </div>
       </motion.div>
