@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Compass, Filter, MapPin } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
 import MealCard from "@/components/adhere/MealCard";
 
 const filters = ["All", "Under ₹200", "Veg Only", "High Protein", "Delivery"];

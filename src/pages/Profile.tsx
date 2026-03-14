@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { User, Target, Utensils, Wallet, MapPin, Bell, CreditCard, ChevronRight, LogOut } from "lucide-react";
+import { Target, Utensils, Wallet, MapPin, Bell, CreditCard, ChevronRight, LogOut } from "lucide-react";
 import AdhereLogo from "@/components/adhere/AdhereLogo";
 
 const settingsGroups = [
