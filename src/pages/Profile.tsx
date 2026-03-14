@@ -47,8 +47,8 @@ const Profile = () => (
     {/* Stats */}
     <motion.div variants={item} className="grid grid-cols-3 gap-3">
       {[
-        { label: "Streak", value: "12", unit: "days" },
-        { label: "Scans", value: "47", unit: "" },
+        { label: "Streak", value: "12", unit: "d" },
+        { label: "Decisions", value: "47", unit: "" },
         { label: "Adherence", value: "74", unit: "%" },
       ].map((stat) => (
         <div key={stat.label} className="rounded-2xl border bg-card p-3.5 shadow-card text-center">
@@ -83,9 +83,9 @@ const Profile = () => (
         <div className="absolute top-0 right-0 w-32 h-32 rounded-full bg-primary-foreground/5 -translate-y-1/2 translate-x-1/2" />
         <div className="flex items-center gap-2 mb-2">
           <Sparkles className="h-4 w-4" />
-          <h3 className="font-bold text-[15px]">You're on Pro</h3>
+          <h3 className="font-bold text-[15px]">Pro — Active</h3>
         </div>
-        <p className="text-[13px] opacity-80 leading-relaxed">Unlimited scans, AI coaching, and advanced insights.</p>
+        <p className="text-[13px] opacity-80 leading-relaxed">Unlimited scans, pattern recognition, full recovery engine, and nearby fallbacks.</p>
         <button className="mt-4 rounded-xl bg-primary-foreground/15 backdrop-blur-sm px-5 py-2.5 text-[12px] font-semibold hover:bg-primary-foreground/25 transition-colors duration-200">
           Manage Subscription
         </button>

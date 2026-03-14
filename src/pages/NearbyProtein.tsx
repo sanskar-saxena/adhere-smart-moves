@@ -6,12 +6,12 @@ import MealCard from "@/components/adhere/MealCard";
 const filters = ["All", "Under ₹200", "Veg Only", "High Protein", "Delivery"];
 
 const nearbyMeals = [
-  { name: "Grilled Chicken Wrap", restaurant: "Protein Point • 0.3 km", calories: 350, protein: 38, price: "₹180", tags: ["delivery", "high protein"], confidence: 95, recommended: true },
-  { name: "Egg Bhurji + 2 Roti", restaurant: "Sagar Kitchen • 0.5 km", calories: 380, protein: 24, price: "₹120", tags: ["under ₹200", "eggetarian"], confidence: 78 },
-  { name: "Soya Chunk Bowl", restaurant: "Green Bites • 0.8 km", calories: 320, protein: 28, price: "₹150", tags: ["veg", "high protein"], confidence: 82 },
-  { name: "Double Egg Sandwich", restaurant: "Toast & Co • 0.4 km", calories: 290, protein: 22, price: "₹100", tags: ["under ₹200", "quick"], confidence: 72 },
-  { name: "Chicken Tikka + Salad", restaurant: "Fit Meals • 1.2 km", calories: 420, protein: 44, price: "₹250", tags: ["best for cut", "delivery"], confidence: 91 },
-  { name: "Paneer Bhurji", restaurant: "Desi Tadka • 0.6 km", calories: 340, protein: 22, price: "₹130", tags: ["veg", "under ₹200"], confidence: 68 },
+  { name: "Grilled Chicken Wrap", restaurant: "Protein Point • 0.3 km", calories: 350, protein: 38, price: "₹180", tags: ["delivery ready", "closes your gap"], confidence: 95, recommended: true },
+  { name: "Egg Bhurji + 2 Roti", restaurant: "Sagar Kitchen • 0.5 km", calories: 380, protein: 24, price: "₹120", tags: ["under budget", "eggetarian"], confidence: 78 },
+  { name: "Soya Chunk Bowl", restaurant: "Green Bites • 0.8 km", calories: 320, protein: 28, price: "₹150", tags: ["veg", "solid protein"], confidence: 82 },
+  { name: "Double Egg Sandwich", restaurant: "Toast & Co • 0.4 km", calories: 290, protein: 22, price: "₹100", tags: ["cheapest option", "grab & go"], confidence: 72 },
+  { name: "Chicken Tikka + Salad", restaurant: "Fit Meals • 1.2 km", calories: 420, protein: 44, price: "₹250", tags: ["top pick for cut", "delivery"], confidence: 91 },
+  { name: "Paneer Bhurji", restaurant: "Desi Tadka • 0.6 km", calories: 340, protein: 22, price: "₹130", tags: ["veg", "under budget"], confidence: 68 },
 ];
 
 const item = {
@@ -35,7 +35,7 @@ const NearbyProtein = () => {
             <Compass className="h-[18px] w-[18px] text-primary" strokeWidth={1.8} />
           </div>
           <div>
-            <h1 className="text-foreground">Nearby Protein</h1>
+            <h1 className="text-foreground">Nearby Fallbacks</h1>
             <div className="flex items-center gap-1 text-2xs text-muted-foreground mt-0.5">
               <MapPin className="h-3 w-3" />
               <span>Koramangala, Bangalore</span>
@@ -65,7 +65,7 @@ const NearbyProtein = () => {
       <motion.div variants={item} className="flex items-center gap-2.5 rounded-2xl bg-primary/6 border border-primary/10 px-4 py-3">
         <Filter className="h-4 w-4 text-primary flex-shrink-0" strokeWidth={2} />
         <span className="text-[13px] font-medium text-primary">
-          {nearbyMeals.length} options • Ranked by protein for fat loss
+          {nearbyMeals.length} options · Protein-ranked for your cut · within your ₹200 budget
         </span>
       </motion.div>
 

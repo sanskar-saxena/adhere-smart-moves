@@ -7,61 +7,61 @@ import AdhereLogo from "@/components/adhere/AdhereLogo";
 
 const steps = [
   {
-    title: "What's your goal?",
-    subtitle: "We'll tailor everything around this.",
+    title: "What outcome do you want?",
+    subtitle: "Everything we recommend is calibrated to this.",
     key: "goal",
     options: [
-      { id: "fat-loss", label: "Fat Loss", emoji: "🔥" },
-      { id: "muscle-gain", label: "Muscle Gain", emoji: "💪" },
-      { id: "recomp", label: "Recomposition", emoji: "⚖️" },
-      { id: "maintenance", label: "Maintenance", emoji: "🛡️" },
+      { id: "fat-loss", label: "Lose fat, keep muscle", emoji: "🔥" },
+      { id: "muscle-gain", label: "Build muscle, controlled bulk", emoji: "💪" },
+      { id: "recomp", label: "Recomposition — both at once", emoji: "⚖️" },
+      { id: "maintenance", label: "Stay where I am, stop slipping", emoji: "🛡️" },
     ],
   },
   {
-    title: "Your lifestyle?",
-    subtitle: "Helps us understand your daily patterns.",
+    title: "What does your day look like?",
+    subtitle: "This shapes when and how we intervene.",
     key: "lifestyle",
     options: [
-      { id: "office", label: "Office Worker", emoji: "🏢" },
-      { id: "traveler", label: "Frequent Traveler", emoji: "✈️" },
-      { id: "student", label: "Student", emoji: "📚" },
-      { id: "hybrid", label: "Hybrid Athlete", emoji: "🏃" },
+      { id: "office", label: "Office — canteen lunches, desk snacking", emoji: "🏢" },
+      { id: "traveler", label: "Travel-heavy — airports, hotels, client dinners", emoji: "✈️" },
+      { id: "student", label: "Student — irregular schedule, tight budget", emoji: "📚" },
+      { id: "hybrid", label: "Active / athletic — already training hard", emoji: "🏃" },
     ],
   },
   {
-    title: "Food preference?",
-    subtitle: "We respect every dietary choice.",
+    title: "What do you eat?",
+    subtitle: "Affects which meals and restaurants we recommend.",
     key: "diet",
     options: [
-      { id: "nonveg", label: "Non-Vegetarian", emoji: "🍗" },
+      { id: "nonveg", label: "Everything — no restrictions", emoji: "🍗" },
       { id: "veg", label: "Vegetarian", emoji: "🥬" },
-      { id: "egg", label: "Eggetarian", emoji: "🥚" },
-      { id: "vegan", label: "Vegan", emoji: "🌱" },
+      { id: "egg", label: "Egg-based, no meat", emoji: "🥚" },
+      { id: "vegan", label: "Plant-only", emoji: "🌱" },
     ],
   },
   {
-    title: "Your biggest struggles?",
-    subtitle: "Select all that apply. No judgment.",
+    title: "Where do you usually fall off?",
+    subtitle: "Select all. This is where Adhere will intervene most.",
     key: "struggle",
     multi: true,
     options: [
-      { id: "cravings", label: "Cravings", emoji: "🍫" },
-      { id: "social", label: "Social Eating", emoji: "🍻" },
-      { id: "travel", label: "Travel", emoji: "🧳" },
-      { id: "inconsistency", label: "Inconsistency", emoji: "📉" },
-      { id: "low-protein", label: "Low Protein", emoji: "🥩" },
-      { id: "late-night", label: "Late-Night Orders", emoji: "🌙" },
+      { id: "cravings", label: "Late-night cravings", emoji: "🍫" },
+      { id: "social", label: "Social meals & peer pressure", emoji: "🍻" },
+      { id: "travel", label: "Traveling or eating out", emoji: "🧳" },
+      { id: "inconsistency", label: "Starting strong, fading by Thursday", emoji: "📉" },
+      { id: "low-protein", label: "Never hitting protein", emoji: "🥩" },
+      { id: "late-night", label: "Ordering delivery too late", emoji: "🌙" },
     ],
   },
   {
-    title: "Workout frequency?",
-    subtitle: "No judgment — just calibrating.",
+    title: "How often do you train?",
+    subtitle: "Affects how aggressively we set your nutrition targets.",
     key: "workout",
     options: [
-      { id: "0-1", label: "0-1 days/week", emoji: "🧘" },
-      { id: "2-3", label: "2-3 days/week", emoji: "💪" },
-      { id: "4-5", label: "4-5 days/week", emoji: "🔥" },
-      { id: "6+", label: "6+ days/week", emoji: "🏆" },
+      { id: "0-1", label: "Rarely — 0-1 days/week", emoji: "🧘" },
+      { id: "2-3", label: "Some — 2-3 days/week", emoji: "💪" },
+      { id: "4-5", label: "Consistent — 4-5 days/week", emoji: "🔥" },
+      { id: "6+", label: "Daily or near-daily", emoji: "🏆" },
     ],
   },
 ];
@@ -178,7 +178,7 @@ const Onboarding = () => {
               }
             }}
           >
-            {isLast ? "Let's Go" : "Continue"} <ArrowRight className="ml-2 h-4 w-4" />
+            {isLast ? "Build My Plan" : "Continue"} <ArrowRight className="ml-2 h-4 w-4" />
           </Button>
         )}
       </div>

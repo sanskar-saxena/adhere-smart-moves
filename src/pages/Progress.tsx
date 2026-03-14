@@ -5,8 +5,8 @@ import InsightCard from "@/components/adhere/InsightCard";
 const trendData = [
   { label: "Weight", value: "78.2", unit: "kg", change: "-1.8 kg", trend: "down", period: "4 wks" },
   { label: "Waist", value: "34.5", unit: "in", change: "-0.5 in", trend: "down", period: "4 wks" },
-  { label: "Adherence", value: "74", unit: "%", change: "+8%", trend: "up", period: "vs last mo" },
-  { label: "Protein", value: "128", unit: "g/day", change: "+15g", trend: "up", period: "avg" },
+  { label: "Adherence", value: "74", unit: "%", change: "+8%", trend: "up", period: "vs prev mo" },
+  { label: "Protein Hit Rate", value: "71", unit: "%", change: "+12%", trend: "up", period: "of days" },
 ];
 
 const weeklyAdherence = [65, 72, 80, 58, 85, 74, 90];
@@ -15,9 +15,9 @@ const maxVal = Math.max(...weeklyAdherence);
 
 const impactItems = [
   { icon: Target, label: "Protein consistency", impact: "+18%", positive: true },
-  { icon: Utensils, label: "Eating out frequency", impact: "-12%", positive: false },
-  { icon: Moon, label: "Sleep quality", impact: "+9%", positive: true },
-  { icon: Brain, label: "Weekend discipline", impact: "-15%", positive: false },
+  { icon: Utensils, label: "Restaurant meals", impact: "-12%", positive: false },
+  { icon: Moon, label: "Sleep above 7 hours", impact: "+9%", positive: true },
+  { icon: Brain, label: "Weekend execution", impact: "-15%", positive: false },
 ];
 
 const Progress = () => (
@@ -28,9 +28,9 @@ const Progress = () => (
     variants={{ visible: { transition: { staggerChildren: 0.07 } } }}
   >
     <motion.div variants={{ hidden: { opacity: 0, y: 16 }, visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] as const } } }}>
-      <span className="section-label text-primary mb-1 block">Analytics</span>
+      <span className="section-label text-primary mb-1 block">Execution Trends</span>
       <h1 className="text-foreground">Progress</h1>
-      <p className="text-[13px] text-muted-foreground mt-1">Trends that matter, not just numbers.</p>
+      <p className="text-[13px] text-muted-foreground mt-1">What's working, what's not, and what to change this week.</p>
     </motion.div>
 
     {/* Trend Cards */}
@@ -69,7 +69,7 @@ const Progress = () => (
       transition={{ delay: 0.3, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
     >
       <div className="flex items-center justify-between mb-6">
-        <h3 className="font-semibold text-card-foreground text-[15px]">Weekly Adherence</h3>
+        <h3 className="font-semibold text-card-foreground text-[15px]">Adherence by Day</h3>
         <span className="text-2xs text-muted-foreground font-medium uppercase tracking-label">This Week</span>
       </div>
       <div className="flex items-end justify-between gap-3 h-36">
@@ -96,10 +96,10 @@ const Progress = () => (
 
     {/* AI Insights */}
     <div className="space-y-3">
-      <h3 className="section-label">AI Insights</h3>
-      <InsightCard type="warning" title="Weekends break your cut" description="Saturday adherence averages 52%. Pre-plan your Saturday meals." />
-      <InsightCard type="tip" title="Office lunches are your weak point" description="You overshoot by ~300 cal on canteen days. Try bringing lunch twice a week." />
-      <InsightCard type="positive" title="Sleep improves your adherence" description="7+ hours of sleep → 23% better adherence. Keep prioritizing sleep." />
+      <h3 className="section-label">What Adhere Sees</h3>
+      <InsightCard type="warning" title="Saturdays are costing you" description="Your Saturday adherence averages 52%. That single day is responsible for 40% of your weekly calorie surplus. Pre-decide Saturday meals by Friday night." />
+      <InsightCard type="tip" title="Office canteen → +300 cal" description="You exceed your target by ~300 cal on days you eat at the canteen. Two packed lunches per week would close this gap." />
+      <InsightCard type="positive" title="Sleep is your biggest lever" description="On days you sleep 7+ hours, your adherence is 23% higher and your protein consistency doubles. This is your single highest-ROI habit." />
     </div>
 
     {/* Impact Breakdown */}
@@ -109,7 +109,7 @@ const Progress = () => (
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.5, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
     >
-      <h3 className="font-semibold text-card-foreground text-[15px] mb-5">What's Moving the Needle</h3>
+      <h3 className="font-semibold text-card-foreground text-[15px] mb-5">Impact on Your Adherence Score</h3>
       <div className="space-y-4">
         {impactItems.map((item) => (
           <div key={item.label} className="flex items-center gap-3.5">

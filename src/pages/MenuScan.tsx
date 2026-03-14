@@ -6,11 +6,11 @@ import MealCard from "@/components/adhere/MealCard";
 import InsightCard from "@/components/adhere/InsightCard";
 
 const mockResults = [
-  { name: "Grilled Chicken Breast", restaurant: "The Health Bowl", calories: 380, protein: 42, price: "₹280", tags: ["best for cut", "best protein/cal"], rank: 1, confidence: 96, recommended: true },
-  { name: "Paneer Tikka Platter", restaurant: "The Health Bowl", calories: 420, protein: 32, price: "₹250", tags: ["vegetarian", "high protein"], rank: 2, confidence: 88 },
-  { name: "Egg White Omelette", restaurant: "The Health Bowl", calories: 280, protein: 28, price: "₹180", tags: ["best under budget", "low cal"], rank: 3, confidence: 82 },
-  { name: "Dal Makhani + Roti", restaurant: "The Health Bowl", calories: 520, protein: 18, price: "₹200", tags: ["safest social option"], rank: 4, confidence: 45 },
-  { name: "Butter Chicken + Naan", restaurant: "The Health Bowl", calories: 780, protein: 35, price: "₹350", tags: ["avoid if cutting"], rank: 5, confidence: 30 },
+  { name: "Grilled Chicken Breast", restaurant: "The Health Bowl", calories: 380, protein: 42, price: "₹280", tags: ["best for your cut", "highest protein/cal"], rank: 1, confidence: 96, recommended: true },
+  { name: "Paneer Tikka Platter", restaurant: "The Health Bowl", calories: 420, protein: 32, price: "₹250", tags: ["strong veg option", "fits your budget"], rank: 2, confidence: 88 },
+  { name: "Egg White Omelette", restaurant: "The Health Bowl", calories: 280, protein: 28, price: "₹180", tags: ["lowest calorie", "under budget"], rank: 3, confidence: 82 },
+  { name: "Dal Makhani + Roti", restaurant: "The Health Bowl", calories: 520, protein: 18, price: "₹200", tags: ["social-safe pick"], rank: 4, confidence: 45 },
+  { name: "Butter Chicken + Naan", restaurant: "The Health Bowl", calories: 780, protein: 35, price: "₹350", tags: ["will blow your deficit"], rank: 5, confidence: 30 },
 ];
 
 const item = {
@@ -29,9 +29,9 @@ const MenuScan = () => {
       variants={{ visible: { transition: { staggerChildren: 0.07 } } }}
     >
       <motion.div variants={item}>
-        <span className="section-label text-primary mb-1 block">AI Scanner</span>
-        <h1 className="text-foreground">Menu Scan</h1>
-        <p className="text-[13px] text-muted-foreground mt-1">Upload a menu photo and get ranked options for your goal.</p>
+        <span className="section-label text-primary mb-1 block">Decision Engine</span>
+        <h1 className="text-foreground">Scan a Menu</h1>
+        <p className="text-[13px] text-muted-foreground mt-1">Drop a photo of any restaurant menu. Every dish ranked and explained for your goal in seconds.</p>
       </motion.div>
 
       {!scanned ? (
@@ -44,8 +44,8 @@ const MenuScan = () => {
               <Upload className="h-8 w-8 text-primary" strokeWidth={1.5} />
             </div>
             <div className="text-center">
-              <p className="font-semibold text-foreground text-[15px]">Upload menu photo</p>
-              <p className="text-[13px] text-muted-foreground mt-1.5">JPG, PNG, or screenshot</p>
+              <p className="font-semibold text-foreground text-[15px]">Drop a menu photo here</p>
+              <p className="text-[13px] text-muted-foreground mt-1.5">Photo, screenshot, or Swiggy/Zomato screen</p>
             </div>
           </div>
 
@@ -68,11 +68,11 @@ const MenuScan = () => {
           <div className="flex items-center gap-2.5 rounded-2xl bg-primary/6 border border-primary/10 px-4 py-3">
             <Sparkles className="h-4 w-4 text-primary flex-shrink-0" strokeWidth={2} />
             <span className="text-[13px] font-medium text-primary">
-              Ranked for your fat loss goal • 820 cal remaining
+              Ranked for fat loss · 820 cal remaining · protein-priority mode
             </span>
           </div>
 
-          <InsightCard type="tip" title="Pro tip" description="Grilled chicken is your best bet today. Skip the naan and save 200 calories." />
+          <InsightCard type="tip" title="Order this, not that" description="The grilled chicken closes your protein gap and leaves room for a 150-cal dessert. The butter chicken blows your deficit for the day." />
 
           <div className="space-y-3">
             {mockResults.map((meal, i) => (
@@ -88,9 +88,9 @@ const MenuScan = () => {
           </div>
 
           <div className="rounded-2xl border bg-card p-5 shadow-card">
-            <h3 className="font-semibold text-card-foreground text-[14px] mb-2">What if I still want dessert?</h3>
+            <h3 className="font-semibold text-card-foreground text-[14px] mb-2">Still want dessert?</h3>
             <p className="text-[13px] text-muted-foreground leading-relaxed">
-              Pick #1 (Grilled Chicken) → ~440 cal left. A small gulab jamun (~150 cal) fits. Skip the kulfi (~280 cal) though.
+              Pick #1 → you'll have ~440 cal left. A gulab jamun (150 cal) fits cleanly. Kulfi (280 cal) doesn't — it'll push you into a surplus and cost you tomorrow's flexibility.
             </p>
           </div>
 

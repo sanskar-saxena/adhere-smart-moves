@@ -14,19 +14,19 @@ const fadeUp = {
 };
 
 const features = [
-  { icon: ScanLine, title: "Scan Any Menu", desc: "Photo a restaurant menu. Get ranked options for your goal in seconds." },
-  { icon: Wrench, title: "Fix Off-Plan Days", desc: "Ate too much? Missed a workout? Get a calm recovery plan, not guilt." },
-  { icon: Compass, title: "Protein Near You", desc: "High-protein meals nearby, filtered by budget, cuisine, and preference." },
-  { icon: TrendingUp, title: "Real Adherence", desc: "Track consistency over perfection. See what actually moves the needle." },
-  { icon: Brain, title: "AI Coach", desc: "Patterns like 'weekends break your cut' — surfaced and actionable." },
-  { icon: Shield, title: "Failure Prevention", desc: "At the exact moment you're about to slip, Adhere steps in." },
+  { icon: ScanLine, title: "Menu Intelligence", desc: "Photograph any restaurant menu. Get every dish ranked, scored, and explained for your specific goal — in under 3 seconds." },
+  { icon: Wrench, title: "Damage Control", desc: "Overate at lunch? Skipped the gym? Tell Adhere what happened. Get a recalibrated plan for the rest of the day, not a lecture." },
+  { icon: Compass, title: "Nearby Fallbacks", desc: "Find the highest-protein meal within your budget and walking distance. Filtered by cuisine, diet, and delivery speed." },
+  { icon: TrendingUp, title: "Adherence, Not Perfection", desc: "One number that captures how well you're executing in real life — eating out, traveling, recovering, and adapting." },
+  { icon: Brain, title: "Pattern Recognition", desc: "\"You overeat by 400 cal every Thursday night.\" Adhere finds the patterns you can't see and tells you before they repeat." },
+  { icon: Shield, title: "Intervention at the Moment of Failure", desc: "When you're staring at Swiggy at 11 PM, Adhere gives you a better option before you tap \"Order.\"" },
 ];
 
 const socialProof = [
-  { metric: "12k+", label: "Active users" },
-  { metric: "4.8★", label: "App rating" },
-  { metric: "89%", label: "Weekly adherence" },
-  { metric: "2.1M", label: "Meals scanned" },
+  { metric: "12k+", label: "Users on track" },
+  { metric: "4.8★", label: "App Store" },
+  { metric: "89%", label: "Avg. adherence" },
+  { metric: "2.1M", label: "Decisions made" },
 ];
 
 const pricingPlans = [
@@ -34,7 +34,7 @@ const pricingPlans = [
     name: "Free",
     price: "₹0",
     period: "forever",
-    features: ["3 menu scans / week", "Daily adherence score", "Basic meal suggestions", "Progress tracking"],
+    features: ["3 menu scans / week", "Daily adherence score", "Basic recovery plans", "Weight & waist tracking"],
     cta: "Start Free",
     highlighted: false,
   },
@@ -42,15 +42,15 @@ const pricingPlans = [
     name: "Pro",
     price: "₹299",
     period: "/month",
-    features: ["Unlimited menu scans", "AI coach insights", "Fix My Day engine", "Nearby protein finder", "Advanced analytics", "Priority support"],
-    cta: "Start 7-Day Trial",
+    features: ["Unlimited menu scans", "AI pattern recognition", "Full recovery engine", "Nearby protein finder", "Eating-out impact analysis", "Priority support"],
+    cta: "Try Pro Free for 7 Days",
     highlighted: true,
   },
   {
     name: "Coach",
     price: "₹999",
     period: "/month",
-    features: ["Everything in Pro", "1:1 coaching integration", "Team & client management", "Custom meal plans", "White-label reports", "API access"],
+    features: ["Everything in Pro", "1:1 coach integration", "Client adherence dashboards", "Custom protocol support", "White-label reporting", "API access"],
     cta: "Contact Sales",
     highlighted: false,
   },
@@ -95,31 +95,31 @@ const Landing = () => {
             <motion.div variants={fadeUp} custom={0}>
               <span className="inline-flex items-center gap-2.5 rounded-full border border-border/60 bg-card/80 backdrop-blur-sm px-4 py-2 text-[13px] font-medium text-muted-foreground shadow-card mb-8">
                 <Sparkles className="h-3.5 w-3.5 text-primary" />
-                Now in early access
+                Early access — 12,000+ users staying on track
               </span>
             </motion.div>
             <motion.h1
               variants={fadeUp}
               custom={1}
-              className="text-display-sm md:text-display lg:text-display-lg font-extrabold text-foreground !leading-[1.08]"
+               className="text-display-sm md:text-display lg:text-display-lg font-extrabold text-foreground !leading-[1.08]"
             >
-              Stay on track
+              You know what to eat.
               <br />
-              <span className="text-gradient-primary">even when life gets messy.</span>
+              <span className="text-gradient-primary">You just can't do it in real life.</span>
             </motion.h1>
             <motion.p
               variants={fadeUp}
               custom={2}
               className="mt-7 text-base md:text-lg text-muted-foreground max-w-xl mx-auto leading-relaxed"
             >
-              Scan menus, fix off-plan days, find high-protein options nearby — powered by AI that understands your real life.
+              Adhere tells you the best thing to order at any restaurant, recovers your plan when you slip, and keeps you adherent through travel, cravings, and social meals — so your body-composition goal actually happens.
             </motion.p>
             <motion.div variants={fadeUp} custom={3} className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
               <Button variant="premium" size="xl" onClick={() => navigate("/onboarding")}>
-                Start For Free <ArrowRight className="ml-2 h-4 w-4" />
+                Get Your Plan <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
               <Button size="xl" variant="outline" onClick={() => document.getElementById("how")?.scrollIntoView({ behavior: "smooth" })}>
-                See How It Works
+                How It Works
               </Button>
             </motion.div>
             <motion.div variants={fadeUp} custom={4} className="mt-16 flex items-center justify-center gap-10 md:gap-14">
@@ -138,14 +138,14 @@ const Landing = () => {
       <section id="how" className="py-24 md:py-32">
         <div className="container">
           <motion.div className="text-center mb-18" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}>
-            <span className="section-label text-primary mb-3 block">How It Works</span>
-            <h2 className="text-foreground">Three steps to never fall off track</h2>
+            <span className="section-label text-primary mb-3 block">The Process</span>
+            <h2 className="text-foreground">Most people fail between meals, not during workouts</h2>
           </motion.div>
           <div className="grid md:grid-cols-3 gap-10 max-w-4xl mx-auto">
             {[
-              { step: "01", title: "Tell us your goal", desc: "Fat loss, muscle gain, recomp, or maintenance. Plus your lifestyle, diet, and budget." },
-              { step: "02", title: "Live your life", desc: "Eat out, travel, get busy. When you're about to order, scan the menu or ask for help." },
-              { step: "03", title: "Stay adherent", desc: "Get the best next move, recover from slip-ups, and watch your adherence score climb." },
+              { step: "01", title: "Set your target", desc: "Fat loss, muscle gain, or recomp. Add your food preferences, budget, eating-out habits, and the situations where you usually fall off." },
+              { step: "02", title: "Make real-life decisions", desc: "At a restaurant? Scan the menu. Overate? Hit Fix My Day. Craving junk? Get an alternative. Every decision is guided, not guessed." },
+              { step: "03", title: "Watch adherence compound", desc: "Your score improves as you make better calls in harder moments. Not gym selfies — real execution in the situations that used to derail you." },
             ].map((item, i) => (
               <motion.div
                 key={item.step}
@@ -170,9 +170,9 @@ const Landing = () => {
       <section id="features" className="py-24 md:py-32 bg-muted/40">
         <div className="container">
           <motion.div className="text-center mb-18" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}>
-            <span className="section-label text-primary mb-3 block">Features</span>
-            <h2 className="text-foreground">Built for Real Life</h2>
-            <p className="mt-3 text-muted-foreground max-w-lg mx-auto text-[15px]">Not another calorie counter. Adhere helps at the exact moments you're about to fail.</p>
+            <span className="section-label text-primary mb-3 block">Capabilities</span>
+            <h2 className="text-foreground">Designed for the Moments You Usually Fail</h2>
+            <p className="mt-3 text-muted-foreground max-w-lg mx-auto text-[15px]">Not a food diary. Not a workout timer. An intelligent operating system for staying adherent when eating out, traveling, recovering, and making fast decisions under pressure.</p>
           </motion.div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 max-w-5xl mx-auto">
             {features.map((f, i) => (
@@ -200,8 +200,8 @@ const Landing = () => {
         <div className="container">
           <motion.div className="text-center mb-18" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}>
             <span className="section-label text-primary mb-3 block">Pricing</span>
-            <h2 className="text-foreground">Simple, Transparent Pricing</h2>
-            <p className="mt-3 text-muted-foreground max-w-lg mx-auto text-[15px]">Start free. Upgrade when you're ready to unlock the full AI engine.</p>
+            <h2 className="text-foreground">One Decision Away from Better Results</h2>
+            <p className="mt-3 text-muted-foreground max-w-lg mx-auto text-[15px]">Start free. Upgrade when you see how much easier adherence gets with the full engine.</p>
           </motion.div>
           <div className="grid md:grid-cols-3 gap-5 max-w-4xl mx-auto items-start">
             {pricingPlans.map((plan, i) => (
@@ -263,15 +263,15 @@ const Landing = () => {
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           >
             <h2 className="text-foreground">
-              Your goal deserves better
+              You don't need more discipline.
               <br className="hidden md:block" />
-              than willpower alone.
+              You need better decisions at the right moment.
             </h2>
             <p className="mt-5 text-muted-foreground max-w-md mx-auto text-[15px] leading-relaxed">
-              Join thousands who stay on track with AI-powered decisions at every meal, every moment of doubt.
+              Adhere gives you the intelligence to stay on track through restaurants, travel, cravings, slip-ups, and every other situation where willpower fails.
             </p>
             <Button variant="premium" size="xl" onClick={() => navigate("/onboarding")} className="mt-10">
-              Get Started — It's Free <ArrowRight className="ml-2 h-4 w-4" />
+              Start Your Plan — Free <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
           </motion.div>
         </div>

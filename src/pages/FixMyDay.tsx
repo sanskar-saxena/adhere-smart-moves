@@ -5,19 +5,19 @@ import { Button } from "@/components/ui/button";
 import InsightCard from "@/components/adhere/InsightCard";
 
 const situations = [
-  { id: "overate", label: "I already ate too much", emoji: "🍕" },
-  { id: "missed", label: "I missed my workout", emoji: "🛋️" },
-  { id: "going-out", label: "I'm going out tonight", emoji: "🍻" },
-  { id: "craving", label: "I'm craving junk food", emoji: "🍫" },
-  { id: "tired", label: "I barely slept", emoji: "😴" },
-  { id: "travel", label: "I'm traveling today", emoji: "✈️" },
+  { id: "overate", label: "I went over my calories", emoji: "🍕" },
+  { id: "missed", label: "I skipped my workout", emoji: "🛋️" },
+  { id: "going-out", label: "I have dinner plans tonight", emoji: "🍻" },
+  { id: "craving", label: "I'm about to order junk", emoji: "🍫" },
+  { id: "tired", label: "I slept badly, everything's harder", emoji: "😴" },
+  { id: "travel", label: "I'm on the road today", emoji: "✈️" },
 ];
 
 const recoverySteps = [
-  "Have a light, high-protein dinner: ~400 cal, 35g+ protein",
-  "Skip the late-night snack — brush teeth early",
-  "Walk 20 min after dinner to offset",
-  "Go to bed by 11 PM to reset hunger hormones",
+  "Protein-first dinner: 400 cal max, 35g+ protein — close the gap, not the kitchen",
+  "No snacking after dinner — brush teeth now, remove the decision later",
+  "20-min walk post-dinner to bring down blood sugar and reclaim 100 cal",
+  "Lights out by 11 PM — sleep debt is the #1 predictor of tomorrow's overeating",
 ];
 
 const FixMyDay = () => {
@@ -32,8 +32,8 @@ const FixMyDay = () => {
             <Wrench className="h-[18px] w-[18px] text-primary" strokeWidth={1.8} />
           </div>
           <div>
-            <h1 className="text-foreground">Fix My Day</h1>
-            <p className="text-[13px] text-muted-foreground mt-0.5">Life happened. Let's get back on track — no guilt.</p>
+            <h1 className="text-foreground">Recover My Day</h1>
+            <p className="text-[13px] text-muted-foreground mt-0.5">Something went sideways. Tell us what — we'll recalibrate the rest of today.</p>
           </div>
         </div>
       </div>
@@ -41,7 +41,7 @@ const FixMyDay = () => {
       <AnimatePresence mode="wait">
         {!showPlan ? (
           <motion.div key="select" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -12 }} transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }} className="space-y-5">
-            <p className="text-[13px] font-semibold text-foreground">What happened?</p>
+            <p className="text-[13px] font-semibold text-foreground">What derailed you?</p>
             <div className="grid grid-cols-2 gap-3">
               {situations.map((s) => (
                 <button
@@ -65,18 +65,18 @@ const FixMyDay = () => {
               disabled={!selected}
               onClick={() => setShowPlan(true)}
             >
-              Fix My Day <ArrowRight className="ml-2 h-4 w-4" />
+              Recalibrate My Day <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
           </motion.div>
         ) : (
           <motion.div key="plan" initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }} className="space-y-5">
             <div className="rounded-3xl bg-gradient-primary p-6 text-primary-foreground shadow-lg shadow-primary/10 relative overflow-hidden">
               <div className="absolute top-0 right-0 w-32 h-32 rounded-full bg-primary-foreground/5 -translate-y-1/2 translate-x-1/2" />
-              <span className="section-label !text-primary-foreground/60 mb-2 block">Recovery Plan</span>
-              <p className="font-semibold text-lg tracking-tight">It's okay. Here's how to finish strong.</p>
+              <span className="section-label !text-primary-foreground/60 mb-2 block">Recalibrated Plan</span>
+              <p className="font-semibold text-lg tracking-tight">Damage is contained. Here's how to close the day strong.</p>
             </div>
 
-            <InsightCard type="positive" title="You're not off track" description="One meal doesn't ruin a week. Your adherence score adjusts for real-life slip-ups." />
+            <InsightCard type="positive" title="This isn't failure — it's a data point" description="One over-meal doesn't break your cut. Your adherence score weights the whole week, not one sitting. Execute the next 4 hours well and today still counts." />
 
             <div className="space-y-2.5">
               {recoverySteps.map((step, i) => (
@@ -96,11 +96,11 @@ const FixMyDay = () => {
             </div>
 
             <div className="rounded-2xl border bg-card p-5 shadow-card">
-              <h3 className="font-semibold text-card-foreground text-[14px] mb-3">What NOT to do</h3>
+              <h3 className="font-semibold text-card-foreground text-[14px] mb-3">These will make it worse</h3>
               <ul className="space-y-2.5 text-[13px] text-muted-foreground">
-                <li className="flex items-start gap-2"><span>❌</span> Don't skip tomorrow's meals to "make up"</li>
-                <li className="flex items-start gap-2"><span>❌</span> Don't do extra cardio out of guilt</li>
-                <li className="flex items-start gap-2"><span>❌</span> Don't think the whole week is ruined</li>
+                <li className="flex items-start gap-2"><span>❌</span> Skipping meals tomorrow to "compensate" — this triggers a binge cycle</li>
+                <li className="flex items-start gap-2"><span>❌</span> Punishing yourself with extra cardio — guilt doesn't burn fat, consistency does</li>
+                <li className="flex items-start gap-2"><span>❌</span> Writing off the rest of the week — your adherence score can still land above 70</li>
               </ul>
             </div>
 
