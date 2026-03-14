@@ -35,7 +35,7 @@ const Home = () => {
       {/* Header */}
       <motion.div variants={item}>
         <p className="text-[13px] text-muted-foreground font-medium">{timeGreeting()}</p>
-        <h1 className="text-foreground mt-0.5">Today's Plan</h1>
+        <h1 className="text-foreground mt-0.5">Your Adherence Dashboard</h1>
       </motion.div>
 
       {/* Score + Stats */}
