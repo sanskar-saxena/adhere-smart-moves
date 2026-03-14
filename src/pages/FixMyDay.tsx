@@ -41,7 +41,7 @@ const FixMyDay = () => {
       <AnimatePresence mode="wait">
         {!showPlan ? (
           <motion.div key="select" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -12 }} transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }} className="space-y-5">
-            <p className="text-[13px] font-semibold text-foreground">What happened?</p>
+            <p className="text-[13px] font-semibold text-foreground">What derailed you?</p>
             <div className="grid grid-cols-2 gap-3">
               {situations.map((s) => (
                 <button
