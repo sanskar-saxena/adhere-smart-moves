@@ -40,8 +40,8 @@ const steps = [
     ],
   },
   {
-    title: "Your biggest struggle?",
-    subtitle: "Where do you fall off track most?",
+    title: "Your biggest struggles?",
+    subtitle: "Select all that apply. No judgment.",
     key: "struggle",
     multi: true,
     options: [
@@ -86,7 +86,7 @@ const Onboarding = () => {
     } else {
       setSelections((prev) => ({ ...prev, [current.key]: [id] }));
       if (step < steps.length - 1) {
-        setTimeout(() => setStep(step + 1), 300);
+        setTimeout(() => setStep(step + 1), 350);
       }
     }
   };
@@ -96,10 +96,10 @@ const Onboarding = () => {
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
-      <header className="flex items-center justify-between px-6 py-4">
+      <header className="flex items-center justify-between px-6 py-5">
         <AdhereLogo size="sm" />
-        <span className="text-sm text-muted-foreground font-medium">
-          {step + 1} of {steps.length}
+        <span className="font-mono text-2xs text-muted-foreground font-medium tracking-label uppercase">
+          {step + 1} / {steps.length}
         </span>
       </header>
 
@@ -109,22 +109,22 @@ const Onboarding = () => {
           <motion.div
             className="h-full bg-gradient-primary rounded-full"
             animate={{ width: `${((step + 1) / steps.length) * 100}%` }}
-            transition={{ duration: 0.3, ease: "easeOut" }}
+            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
           />
         </div>
       </div>
 
-      <div className="flex-1 flex flex-col justify-center px-6 py-8 max-w-lg mx-auto w-full">
+      <div className="flex-1 flex flex-col justify-center px-6 py-10 max-w-lg mx-auto w-full">
         <AnimatePresence mode="wait">
           <motion.div
             key={step}
-            initial={{ opacity: 0, x: 20 }}
+            initial={{ opacity: 0, x: 24 }}
             animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -20 }}
-            transition={{ duration: 0.3 }}
+            exit={{ opacity: 0, x: -24 }}
+            transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
           >
-            <h1 className="text-2xl md:text-3xl font-bold text-foreground">{current.title}</h1>
-            <p className="mt-2 text-muted-foreground">{current.subtitle}</p>
+            <h1 className="text-foreground">{current.title}</h1>
+            <p className="mt-2 text-[14px] text-muted-foreground">{current.subtitle}</p>
 
             <div className={`mt-8 grid gap-3 ${current.options.length > 4 ? "grid-cols-2" : "grid-cols-1"}`}>
               {current.options.map((opt) => {
@@ -133,18 +133,22 @@ const Onboarding = () => {
                   <button
                     key={opt.id}
                     onClick={() => handleSelect(opt.id)}
-                    className={`flex items-center gap-3 rounded-xl border p-4 text-left transition-all ${
+                    className={`flex items-center gap-3.5 rounded-2xl border p-4.5 text-left transition-all duration-200 ease-spring active:scale-[0.97] ${
                       selected
-                        ? "border-primary bg-primary/5 card-shadow-hover"
-                        : "border-border bg-card card-shadow hover:card-shadow-hover"
+                        ? "border-primary/25 bg-primary/5 shadow-card-hover ring-1 ring-primary/10"
+                        : "border-border bg-card shadow-card hover:shadow-card-hover hover:-translate-y-0.5"
                     }`}
                   >
                     <span className="text-2xl">{opt.emoji}</span>
-                    <span className="font-medium text-card-foreground flex-1">{opt.label}</span>
+                    <span className="font-medium text-[14px] text-card-foreground flex-1 tracking-tight">{opt.label}</span>
                     {selected && (
-                      <div className="flex h-5 w-5 items-center justify-center rounded-full bg-primary">
-                        <Check className="h-3 w-3 text-primary-foreground" />
-                      </div>
+                      <motion.div
+                        initial={{ scale: 0 }}
+                        animate={{ scale: 1 }}
+                        className="flex h-5.5 w-5.5 items-center justify-center rounded-full bg-primary"
+                      >
+                        <Check className="h-3 w-3 text-primary-foreground" strokeWidth={3} />
+                      </motion.div>
                     )}
                   </button>
                 );
@@ -156,14 +160,15 @@ const Onboarding = () => {
 
       <div className="px-6 py-6 flex items-center gap-3 max-w-lg mx-auto w-full">
         {step > 0 && (
-          <Button variant="outline" size="lg" onClick={() => setStep(step - 1)} className="h-12">
+          <Button variant="outline" size="lg" onClick={() => setStep(step - 1)}>
             <ArrowLeft className="h-4 w-4" />
           </Button>
         )}
         {(isMulti || isLast) && (
           <Button
+            variant="premium"
             size="lg"
-            className="flex-1 h-12 bg-gradient-primary text-primary-foreground"
+            className="flex-1"
             disabled={!canProceed}
             onClick={() => {
               if (isLast) {
