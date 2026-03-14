@@ -32,8 +32,8 @@ const FixMyDay = () => {
             <Wrench className="h-[18px] w-[18px] text-primary" strokeWidth={1.8} />
           </div>
           <div>
-            <h1 className="text-foreground">Fix My Day</h1>
-            <p className="text-[13px] text-muted-foreground mt-0.5">Life happened. Let's get back on track — no guilt.</p>
+            <h1 className="text-foreground">Recover My Day</h1>
+            <p className="text-[13px] text-muted-foreground mt-0.5">Something went sideways. Tell us what — we'll recalibrate the rest of today.</p>
           </div>
         </div>
       </div>
