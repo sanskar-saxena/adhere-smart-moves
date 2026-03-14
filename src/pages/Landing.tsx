@@ -200,8 +200,8 @@ const Landing = () => {
         <div className="container">
           <motion.div className="text-center mb-18" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}>
             <span className="section-label text-primary mb-3 block">Pricing</span>
-            <h2 className="text-foreground">Simple, Transparent Pricing</h2>
-            <p className="mt-3 text-muted-foreground max-w-lg mx-auto text-[15px]">Start free. Upgrade when you're ready to unlock the full AI engine.</p>
+            <h2 className="text-foreground">One Decision Away from Better Results</h2>
+            <p className="mt-3 text-muted-foreground max-w-lg mx-auto text-[15px]">Start free. Upgrade when you see how much easier adherence gets with the full engine.</p>
           </motion.div>
           <div className="grid md:grid-cols-3 gap-5 max-w-4xl mx-auto items-start">
             {pricingPlans.map((plan, i) => (
