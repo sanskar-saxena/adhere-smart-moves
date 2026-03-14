@@ -72,7 +72,7 @@ const MenuScan = () => {
             </span>
           </div>
 
-          <InsightCard type="tip" title="Pro tip" description="Grilled chicken is your best bet today. Skip the naan and save 200 calories." />
+          <InsightCard type="tip" title="Order this, not that" description="The grilled chicken closes your protein gap and leaves room for a 150-cal dessert. The butter chicken blows your deficit for the day." />
 
           <div className="space-y-3">
             {mockResults.map((meal, i) => (
