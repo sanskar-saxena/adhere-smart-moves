@@ -1,10 +1,13 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { MapPin } from "lucide-react";
-import { staggerContainer, fadeUpItem } from "@/lib/motion";
+import { MapPin, Compass } from "lucide-react";
+import { staggerContainer, fadeUpItem, SPRING_EASE } from "@/lib/motion";
 import PageHeader from "@/components/adhere/PageHeader";
 import FilterPills from "@/components/adhere/FilterPills";
 import MealCard from "@/components/adhere/MealCard";
+import EmptyState from "@/components/adhere/EmptyState";
+import ErrorState from "@/components/adhere/ErrorState";
+import { MealListSkeleton } from "@/components/adhere/Skeletons";
 
 const filters = ["All", "Under ₹200", "Veg", "High Protein", "Delivery"];
 
@@ -17,15 +20,45 @@ const nearbyMeals = [
   { name: "Paneer Bhurji", restaurant: "Desi Tadka · 0.6 km", calories: 340, protein: 22, price: "₹130", tags: ["veg", "under budget"], confidence: 68 },
 ];
 
+const filterMap: Record<string, (m: typeof nearbyMeals[0]) => boolean> = {
+  "All": () => true,
+  "Under ₹200": (m) => parseInt(m.price.replace(/[^\d]/g, "")) <= 200,
+  "Veg": (m) => m.tags.some((t) => t.toLowerCase().includes("veg")),
+  "High Protein": (m) => m.protein >= 30,
+  "Delivery": (m) => m.tags.some((t) => t.toLowerCase().includes("delivery")),
+};
+
 const NearbyProtein = () => {
   const [activeFilter, setActiveFilter] = useState("All");
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
+
+  useEffect(() => {
+    const t = setTimeout(() => setLoading(false), 900);
+    return () => clearTimeout(t);
+  }, []);
+
+  const filtered = nearbyMeals.filter(filterMap[activeFilter] || (() => true));
+
+  if (error) {
+    return (
+      <div className="space-y-5">
+        <PageHeader eyebrow="Nearby Fallbacks" title="Nearby Protein" />
+        <ErrorState
+          title="Location unavailable"
+          description="We need your location to find nearby options. Enable location access and try again."
+          onRetry={() => { setError(false); setLoading(true); setTimeout(() => setLoading(false), 900); }}
+        />
+      </div>
+    );
+  }
 
   return (
     <motion.div className="space-y-5" initial="hidden" animate="visible" variants={staggerContainer}>
       <PageHeader
         eyebrow="Nearby Fallbacks"
         title="Nearby Protein"
-        description={`Ranked by protein per calorie for your cut. ${nearbyMeals.length} options found.`}
+        description={loading ? undefined : `Ranked by protein per calorie for your cut. ${filtered.length} options found.`}
         leading={
           <div className="flex items-center gap-1.5 text-[12px] text-muted-foreground mb-1">
             <MapPin className="h-3 w-3" />
@@ -38,18 +71,29 @@ const NearbyProtein = () => {
         <FilterPills filters={filters} active={activeFilter} onChange={setActiveFilter} />
       </motion.div>
 
-      <div className="space-y-2.5">
-        {nearbyMeals.map((meal, i) => (
-          <motion.div
-            key={meal.name}
-            initial={{ opacity: 0, y: 14 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.15 + i * 0.05, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-          >
-            <MealCard {...meal} rank={i + 1} />
-          </motion.div>
-        ))}
-      </div>
+      {loading ? (
+        <MealListSkeleton count={4} />
+      ) : filtered.length === 0 ? (
+        <EmptyState
+          icon={Compass}
+          title="No matches for this filter"
+          description="Try broadening your filter or checking a different area."
+          action={{ label: "Show all options", onClick: () => setActiveFilter("All") }}
+        />
+      ) : (
+        <div className="space-y-2.5">
+          {filtered.map((meal, i) => (
+            <motion.div
+              key={meal.name}
+              initial={{ opacity: 0, y: 14 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1 + i * 0.05, duration: 0.5, ease: SPRING_EASE }}
+            >
+              <MealCard {...meal} rank={i + 1} />
+            </motion.div>
+          ))}
+        </div>
+      )}
     </motion.div>
   );
 };

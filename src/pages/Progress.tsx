@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Target, Utensils, Moon, Brain } from "lucide-react";
 import { staggerContainer, fadeUpItem } from "@/lib/motion";
@@ -6,6 +7,8 @@ import TrendCard from "@/components/adhere/TrendCard";
 import WeeklyChart from "@/components/adhere/WeeklyChart";
 import AlertBanner from "@/components/adhere/AlertBanner";
 import ImpactRow from "@/components/adhere/ImpactRow";
+import ErrorState from "@/components/adhere/ErrorState";
+import { ProgressSkeleton } from "@/components/adhere/Skeletons";
 
 const trendData = [
   { label: "Weight", value: "78.2", unit: "kg", change: "-1.8 kg", trend: "down" as const, period: "4 wks" },
@@ -30,42 +33,60 @@ const impactItems = [
   { icon: Brain, label: "Weekend execution", impact: "-15%", positive: false },
 ];
 
-const Progress = () => (
-  <motion.div className="space-y-5" initial="hidden" animate="visible" variants={staggerContainer}>
-    <PageHeader eyebrow="Execution Trends" title="What's Working" />
+const Progress = () => {
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
 
-    {/* Trend Cards */}
-    <div className="grid grid-cols-2 gap-2.5">
-      {trendData.map((t, i) => (
-        <motion.div key={t.label} variants={fadeUpItem}>
-          <TrendCard {...t} />
-        </motion.div>
-      ))}
-    </div>
+  useEffect(() => {
+    const t = setTimeout(() => setLoading(false), 1000);
+    return () => clearTimeout(t);
+  }, []);
 
-    {/* Weekly Chart */}
-    <motion.div variants={fadeUpItem}>
-      <WeeklyChart values={weeklyValues} labels={weeklyLabels} />
-    </motion.div>
+  if (error) {
+    return (
+      <ErrorState
+        title="Couldn't load your trends"
+        description="We need at least 3 days of data to show execution trends. Keep logging and check back."
+        onRetry={() => { setError(false); setLoading(true); setTimeout(() => setLoading(false), 1000); }}
+      />
+    );
+  }
 
-    {/* AI Pattern Insights */}
-    <motion.div variants={fadeUpItem} className="space-y-2">
-      <p className="text-[11px] font-bold uppercase tracking-[0.1em] text-muted-foreground">What Adhere Sees</p>
-      {insights.map((insight, i) => (
-        <AlertBanner key={i} variant="info" emoji={insight.emoji} title={insight.title} description={insight.desc} />
-      ))}
-    </motion.div>
+  if (loading) return <ProgressSkeleton />;
 
-    {/* Impact Breakdown */}
-    <motion.div variants={fadeUpItem} className="rounded-2xl border bg-card p-5 shadow-card">
-      <p className="text-[13px] font-semibold text-card-foreground mb-4">Impact on Adherence Score</p>
-      <div className="space-y-3.5">
-        {impactItems.map((imp) => (
-          <ImpactRow key={imp.label} {...imp} />
+  return (
+    <motion.div className="space-y-5" initial="hidden" animate="visible" variants={staggerContainer}>
+      <PageHeader eyebrow="Execution Trends" title="What's Working" />
+
+      <div className="grid grid-cols-2 gap-2.5">
+        {trendData.map((t) => (
+          <motion.div key={t.label} variants={fadeUpItem}>
+            <TrendCard {...t} />
+          </motion.div>
         ))}
       </div>
+
+      <motion.div variants={fadeUpItem}>
+        <WeeklyChart values={weeklyValues} labels={weeklyLabels} />
+      </motion.div>
+
+      <motion.div variants={fadeUpItem} className="space-y-2">
+        <p className="text-[11px] font-bold uppercase tracking-[0.1em] text-muted-foreground">What Adhere Sees</p>
+        {insights.map((insight, i) => (
+          <AlertBanner key={i} variant="info" emoji={insight.emoji} title={insight.title} description={insight.desc} />
+        ))}
+      </motion.div>
+
+      <motion.div variants={fadeUpItem} className="rounded-2xl border bg-card p-5 shadow-card">
+        <p className="text-[13px] font-semibold text-card-foreground mb-4">Impact on Adherence Score</p>
+        <div className="space-y-3.5">
+          {impactItems.map((imp) => (
+            <ImpactRow key={imp.label} {...imp} />
+          ))}
+        </div>
+      </motion.div>
     </motion.div>
-  </motion.div>
-);
+  );
+};
 
 export default Progress;
