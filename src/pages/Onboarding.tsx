@@ -7,14 +7,14 @@ import AdhereLogo from "@/components/adhere/AdhereLogo";
 
 const steps = [
   {
-    title: "What's your goal?",
-    subtitle: "We'll tailor everything around this.",
+    title: "What outcome do you want?",
+    subtitle: "Everything we recommend is calibrated to this.",
     key: "goal",
     options: [
-      { id: "fat-loss", label: "Fat Loss", emoji: "🔥" },
-      { id: "muscle-gain", label: "Muscle Gain", emoji: "💪" },
-      { id: "recomp", label: "Recomposition", emoji: "⚖️" },
-      { id: "maintenance", label: "Maintenance", emoji: "🛡️" },
+      { id: "fat-loss", label: "Lose fat, keep muscle", emoji: "🔥" },
+      { id: "muscle-gain", label: "Build muscle, controlled bulk", emoji: "💪" },
+      { id: "recomp", label: "Recomposition — both at once", emoji: "⚖️" },
+      { id: "maintenance", label: "Stay where I am, stop slipping", emoji: "🛡️" },
     ],
   },
   {
