@@ -88,9 +88,9 @@ const MenuScan = () => {
           </div>
 
           <div className="rounded-2xl border bg-card p-5 shadow-card">
-            <h3 className="font-semibold text-card-foreground text-[14px] mb-2">What if I still want dessert?</h3>
+            <h3 className="font-semibold text-card-foreground text-[14px] mb-2">Still want dessert?</h3>
             <p className="text-[13px] text-muted-foreground leading-relaxed">
-              Pick #1 (Grilled Chicken) → ~440 cal left. A small gulab jamun (~150 cal) fits. Skip the kulfi (~280 cal) though.
+              Pick #1 → you'll have ~440 cal left. A gulab jamun (150 cal) fits cleanly. Kulfi (280 cal) doesn't — it'll push you into a surplus and cost you tomorrow's flexibility.
             </p>
           </div>
 
