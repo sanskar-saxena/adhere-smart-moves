@@ -3,10 +3,10 @@ import { useLocation, useNavigate } from "react-router-dom";
 import AdhereLogo from "./AdhereLogo";
 
 const navItems = [
-  { icon: Home, label: "Today", path: "/app" },
-  { icon: ScanLine, label: "Menu Scan", path: "/app/scan" },
-  { icon: Wrench, label: "Fix My Day", path: "/app/fix" },
-  { icon: Compass, label: "Nearby", path: "/app/nearby" },
+  { icon: Home, label: "Dashboard", path: "/app" },
+  { icon: ScanLine, label: "Scan Menu", path: "/app/scan" },
+  { icon: Wrench, label: "Recover My Day", path: "/app/fix" },
+  { icon: Compass, label: "Nearby Fallbacks", path: "/app/nearby" },
   { icon: TrendingUp, label: "Progress", path: "/app/progress" },
   { icon: User, label: "Profile", path: "/app/profile" },
 ];
