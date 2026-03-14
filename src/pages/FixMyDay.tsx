@@ -72,8 +72,8 @@ const FixMyDay = () => {
           <motion.div key="plan" initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }} className="space-y-5">
             <div className="rounded-3xl bg-gradient-primary p-6 text-primary-foreground shadow-lg shadow-primary/10 relative overflow-hidden">
               <div className="absolute top-0 right-0 w-32 h-32 rounded-full bg-primary-foreground/5 -translate-y-1/2 translate-x-1/2" />
-              <span className="section-label !text-primary-foreground/60 mb-2 block">Recovery Plan</span>
-              <p className="font-semibold text-lg tracking-tight">It's okay. Here's how to finish strong.</p>
+              <span className="section-label !text-primary-foreground/60 mb-2 block">Recalibrated Plan</span>
+              <p className="font-semibold text-lg tracking-tight">Damage is contained. Here's how to close the day strong.</p>
             </div>
 
             <InsightCard type="positive" title="You're not off track" description="One meal doesn't ruin a week. Your adherence score adjusts for real-life slip-ups." />
