@@ -93,7 +93,7 @@ const Home = () => {
               <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-primary/8">
                 <Dumbbell className="h-[18px] w-[18px] text-primary" strokeWidth={1.8} />
               </div>
-              <h3 className="font-semibold text-card-foreground text-[15px]">Today's Workout</h3>
+              <h3 className="font-semibold text-card-foreground text-[15px]">Training Intent</h3>
             </div>
             <span className="text-2xs font-semibold text-primary bg-primary/8 px-2.5 py-1 rounded-full uppercase tracking-label">Upper Body</span>
           </div>
