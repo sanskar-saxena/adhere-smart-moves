@@ -44,8 +44,8 @@ const MenuScan = () => {
               <Upload className="h-8 w-8 text-primary" strokeWidth={1.5} />
             </div>
             <div className="text-center">
-              <p className="font-semibold text-foreground text-[15px]">Upload menu photo</p>
-              <p className="text-[13px] text-muted-foreground mt-1.5">JPG, PNG, or screenshot</p>
+              <p className="font-semibold text-foreground text-[15px]">Drop a menu photo here</p>
+              <p className="text-[13px] text-muted-foreground mt-1.5">Photo, screenshot, or Swiggy/Zomato screen</p>
             </div>
           </div>
 
