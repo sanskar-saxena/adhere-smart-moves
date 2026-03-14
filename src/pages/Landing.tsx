@@ -263,15 +263,15 @@ const Landing = () => {
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           >
             <h2 className="text-foreground">
-              Your goal deserves better
+              You don't need more discipline.
               <br className="hidden md:block" />
-              than willpower alone.
+              You need better decisions at the right moment.
             </h2>
             <p className="mt-5 text-muted-foreground max-w-md mx-auto text-[15px] leading-relaxed">
-              Join thousands who stay on track with AI-powered decisions at every meal, every moment of doubt.
+              Adhere gives you the intelligence to stay on track through restaurants, travel, cravings, slip-ups, and every other situation where willpower fails.
             </p>
             <Button variant="premium" size="xl" onClick={() => navigate("/onboarding")} className="mt-10">
-              Get Started — It's Free <ArrowRight className="ml-2 h-4 w-4" />
+              Start Your Plan — Free <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
           </motion.div>
         </div>

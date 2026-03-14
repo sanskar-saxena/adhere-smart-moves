@@ -96,11 +96,11 @@ const FixMyDay = () => {
             </div>
 
             <div className="rounded-2xl border bg-card p-5 shadow-card">
-              <h3 className="font-semibold text-card-foreground text-[14px] mb-3">What NOT to do</h3>
+              <h3 className="font-semibold text-card-foreground text-[14px] mb-3">These will make it worse</h3>
               <ul className="space-y-2.5 text-[13px] text-muted-foreground">
-                <li className="flex items-start gap-2"><span>❌</span> Don't skip tomorrow's meals to "make up"</li>
-                <li className="flex items-start gap-2"><span>❌</span> Don't do extra cardio out of guilt</li>
-                <li className="flex items-start gap-2"><span>❌</span> Don't think the whole week is ruined</li>
+                <li className="flex items-start gap-2"><span>❌</span> Skipping meals tomorrow to "compensate" — this triggers a binge cycle</li>
+                <li className="flex items-start gap-2"><span>❌</span> Punishing yourself with extra cardio — guilt doesn't burn fat, consistency does</li>
+                <li className="flex items-start gap-2"><span>❌</span> Writing off the rest of the week — your adherence score can still land above 70</li>
               </ul>
             </div>
 

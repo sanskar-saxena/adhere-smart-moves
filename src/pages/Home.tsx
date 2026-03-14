@@ -111,7 +111,7 @@ const Home = () => {
 
       {/* AI Insight */}
       <motion.div variants={item}>
-        <InsightCard type="positive" title="3-day protein streak 🎯" description="You've hit your protein target 3 days in a row. Keep it going." />
+        <InsightCard type="positive" title="3-day protein streak 🎯" description="You've closed your protein gap 3 days running. That's directly accelerating your cut." />
       </motion.div>
     </motion.div>
   );

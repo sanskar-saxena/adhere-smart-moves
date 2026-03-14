@@ -178,7 +178,7 @@ const Onboarding = () => {
               }
             }}
           >
-            {isLast ? "Let's Go" : "Continue"} <ArrowRight className="ml-2 h-4 w-4" />
+            {isLast ? "Build My Plan" : "Continue"} <ArrowRight className="ml-2 h-4 w-4" />
           </Button>
         )}
       </div>

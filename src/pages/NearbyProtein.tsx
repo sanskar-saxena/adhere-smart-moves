@@ -65,7 +65,7 @@ const NearbyProtein = () => {
       <motion.div variants={item} className="flex items-center gap-2.5 rounded-2xl bg-primary/6 border border-primary/10 px-4 py-3">
         <Filter className="h-4 w-4 text-primary flex-shrink-0" strokeWidth={2} />
         <span className="text-[13px] font-medium text-primary">
-          {nearbyMeals.length} options • Ranked by protein for fat loss
+          {nearbyMeals.length} options · Protein-ranked for your cut · within your ₹200 budget
         </span>
       </motion.div>
 

@@ -109,7 +109,7 @@ const Progress = () => (
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.5, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
     >
-      <h3 className="font-semibold text-card-foreground text-[15px] mb-5">What's Moving the Needle</h3>
+      <h3 className="font-semibold text-card-foreground text-[15px] mb-5">Impact on Your Adherence Score</h3>
       <div className="space-y-4">
         {impactItems.map((item) => (
           <div key={item.label} className="flex items-center gap-3.5">
