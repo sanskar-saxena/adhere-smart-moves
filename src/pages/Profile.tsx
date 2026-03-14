@@ -59,7 +59,7 @@ const Profile = () => (
     </motion.div>
 
     {/* Settings Groups */}
-    {settingsGroups.map((group, gi) => (
+    {settingsGroups.map((group) => (
       <motion.div key={group.title} variants={item}>
         <h2 className="section-label mb-3">{group.title}</h2>
         <div className="rounded-2xl border bg-card shadow-card overflow-hidden divide-y divide-border">
