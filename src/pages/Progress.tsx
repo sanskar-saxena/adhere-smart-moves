@@ -96,10 +96,10 @@ const Progress = () => (
 
     {/* AI Insights */}
     <div className="space-y-3">
-      <h3 className="section-label">AI Insights</h3>
-      <InsightCard type="warning" title="Weekends break your cut" description="Saturday adherence averages 52%. Pre-plan your Saturday meals." />
-      <InsightCard type="tip" title="Office lunches are your weak point" description="You overshoot by ~300 cal on canteen days. Try bringing lunch twice a week." />
-      <InsightCard type="positive" title="Sleep improves your adherence" description="7+ hours of sleep → 23% better adherence. Keep prioritizing sleep." />
+      <h3 className="section-label">What Adhere Sees</h3>
+      <InsightCard type="warning" title="Saturdays are costing you" description="Your Saturday adherence averages 52%. That single day is responsible for 40% of your weekly calorie surplus. Pre-decide Saturday meals by Friday night." />
+      <InsightCard type="tip" title="Office canteen → +300 cal" description="You exceed your target by ~300 cal on days you eat at the canteen. Two packed lunches per week would close this gap." />
+      <InsightCard type="positive" title="Sleep is your biggest lever" description="On days you sleep 7+ hours, your adherence is 23% higher and your protein consistency doubles. This is your single highest-ROI habit." />
     </div>
 
     {/* Impact Breakdown */}
