@@ -69,7 +69,7 @@ const Progress = () => (
       transition={{ delay: 0.3, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
     >
       <div className="flex items-center justify-between mb-6">
-        <h3 className="font-semibold text-card-foreground text-[15px]">Weekly Adherence</h3>
+        <h3 className="font-semibold text-card-foreground text-[15px]">Adherence by Day</h3>
         <span className="text-2xs text-muted-foreground font-medium uppercase tracking-label">This Week</span>
       </div>
       <div className="flex items-end justify-between gap-3 h-36">
