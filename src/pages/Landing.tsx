@@ -112,7 +112,7 @@ const Landing = () => {
               custom={2}
               className="mt-7 text-base md:text-lg text-muted-foreground max-w-xl mx-auto leading-relaxed"
             >
-              Scan menus, fix off-plan days, find high-protein options nearby — powered by AI that understands your real life.
+              Adhere tells you the best thing to order at any restaurant, recovers your plan when you slip, and keeps you adherent through travel, cravings, and social meals — so your body-composition goal actually happens.
             </motion.p>
             <motion.div variants={fadeUp} custom={3} className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
               <Button variant="premium" size="xl" onClick={() => navigate("/onboarding")}>
