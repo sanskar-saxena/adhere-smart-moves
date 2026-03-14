@@ -18,14 +18,14 @@ const steps = [
     ],
   },
   {
-    title: "Your lifestyle?",
-    subtitle: "Helps us understand your daily patterns.",
+    title: "What does your day look like?",
+    subtitle: "This shapes when and how we intervene.",
     key: "lifestyle",
     options: [
-      { id: "office", label: "Office Worker", emoji: "🏢" },
-      { id: "traveler", label: "Frequent Traveler", emoji: "✈️" },
-      { id: "student", label: "Student", emoji: "📚" },
-      { id: "hybrid", label: "Hybrid Athlete", emoji: "🏃" },
+      { id: "office", label: "Office — canteen lunches, desk snacking", emoji: "🏢" },
+      { id: "traveler", label: "Travel-heavy — airports, hotels, client dinners", emoji: "✈️" },
+      { id: "student", label: "Student — irregular schedule, tight budget", emoji: "📚" },
+      { id: "hybrid", label: "Active / athletic — already training hard", emoji: "🏃" },
     ],
   },
   {
