@@ -28,9 +28,9 @@ const Progress = () => (
     variants={{ visible: { transition: { staggerChildren: 0.07 } } }}
   >
     <motion.div variants={{ hidden: { opacity: 0, y: 16 }, visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] as const } } }}>
-      <span className="section-label text-primary mb-1 block">Analytics</span>
+      <span className="section-label text-primary mb-1 block">Execution Trends</span>
       <h1 className="text-foreground">Progress</h1>
-      <p className="text-[13px] text-muted-foreground mt-1">Trends that matter, not just numbers.</p>
+      <p className="text-[13px] text-muted-foreground mt-1">What's working, what's not, and what to change this week.</p>
     </motion.div>
 
     {/* Trend Cards */}
