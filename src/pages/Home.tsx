@@ -97,7 +97,7 @@ const Home = () => {
             </div>
             <span className="text-2xs font-semibold text-primary bg-primary/8 px-2.5 py-1 rounded-full uppercase tracking-label">Upper Body</span>
           </div>
-          <p className="text-[13px] text-muted-foreground">Push day — Chest, Shoulders, Triceps</p>
+          <p className="text-[13px] text-muted-foreground">Push — Chest, Shoulders, Triceps · ~45 min</p>
           <div className="mt-4 flex gap-2.5">
             <button className="flex-1 rounded-xl bg-primary/8 py-2.5 text-[13px] font-semibold text-primary transition-all duration-200 hover:bg-primary/14 active:scale-[0.97]">
               Start Workout
