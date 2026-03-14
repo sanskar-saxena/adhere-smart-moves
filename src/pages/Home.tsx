@@ -55,15 +55,15 @@ const Home = () => {
       <motion.div variants={item}>
         <div className="rounded-3xl bg-gradient-primary p-6 text-primary-foreground shadow-lg shadow-primary/10 relative overflow-hidden">
           <div className="absolute top-0 right-0 w-32 h-32 rounded-full bg-primary-foreground/5 -translate-y-1/2 translate-x-1/2" />
-          <span className="section-label !text-primary-foreground/60 mb-2 block">Best Next Move</span>
+          <span className="section-label !text-primary-foreground/60 mb-2 block">Your Best Next Move</span>
           <p className="font-semibold text-lg leading-snug tracking-tight">
-            Have a high-protein dinner under 500 cal.
+            High-protein dinner, under 500 cal. Prioritize protein over everything else tonight.
           </p>
           <p className="text-[13px] mt-2.5 opacity-75 leading-relaxed">
-            Try grilled chicken salad or paneer tikka. You're 45g protein short — prioritize that over calories tonight.
+            You're 45g short on protein with 820 cal remaining. Grilled chicken salad or paneer tikka from any nearby restaurant will close the gap.
           </p>
           <button className="mt-4 inline-flex items-center gap-1.5 text-[13px] font-semibold opacity-90 hover:opacity-100 transition-opacity">
-            See options <ArrowRight className="h-3.5 w-3.5" />
+            Find options nearby <ArrowRight className="h-3.5 w-3.5" />
           </button>
         </div>
       </motion.div>
