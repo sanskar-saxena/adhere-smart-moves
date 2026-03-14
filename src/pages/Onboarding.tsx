@@ -54,14 +54,14 @@ const steps = [
     ],
   },
   {
-    title: "Workout frequency?",
-    subtitle: "No judgment — just calibrating.",
+    title: "How often do you train?",
+    subtitle: "Affects how aggressively we set your nutrition targets.",
     key: "workout",
     options: [
-      { id: "0-1", label: "0-1 days/week", emoji: "🧘" },
-      { id: "2-3", label: "2-3 days/week", emoji: "💪" },
-      { id: "4-5", label: "4-5 days/week", emoji: "🔥" },
-      { id: "6+", label: "6+ days/week", emoji: "🏆" },
+      { id: "0-1", label: "Rarely — 0-1 days/week", emoji: "🧘" },
+      { id: "2-3", label: "Some — 2-3 days/week", emoji: "💪" },
+      { id: "4-5", label: "Consistent — 4-5 days/week", emoji: "🔥" },
+      { id: "6+", label: "Daily or near-daily", emoji: "🏆" },
     ],
   },
 ];
