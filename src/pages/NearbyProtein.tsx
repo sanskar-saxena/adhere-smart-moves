@@ -14,66 +14,75 @@ const nearbyMeals = [
   { name: "Paneer Bhurji", restaurant: "Desi Tadka • 0.6 km", calories: 340, protein: 22, price: "₹130", tags: ["veg", "under ₹200"], confidence: 68 },
 ];
 
+const item = {
+  hidden: { opacity: 0, y: 16 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] as const } },
+};
+
 const NearbyProtein = () => {
   const [activeFilter, setActiveFilter] = useState("All");
 
   return (
-    <div className="space-y-6">
-      <div>
-        <div className="flex items-center gap-2 mb-1">
-          <Compass className="h-5 w-5 text-primary" />
-          <h1 className="text-2xl font-bold text-foreground">Nearby Protein</h1>
+    <motion.div
+      className="space-y-6"
+      initial="hidden"
+      animate="visible"
+      variants={{ visible: { transition: { staggerChildren: 0.07 } } }}
+    >
+      <motion.div variants={item}>
+        <div className="flex items-center gap-2.5 mb-1">
+          <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-primary/8">
+            <Compass className="h-[18px] w-[18px] text-primary" strokeWidth={1.8} />
+          </div>
+          <div>
+            <h1 className="text-foreground">Nearby Protein</h1>
+            <div className="flex items-center gap-1 text-2xs text-muted-foreground mt-0.5">
+              <MapPin className="h-3 w-3" />
+              <span>Koramangala, Bangalore</span>
+            </div>
+          </div>
         </div>
-        <div className="flex items-center gap-1 text-sm text-muted-foreground">
-          <MapPin className="h-3.5 w-3.5" />
-          <span>Koramangala, Bangalore</span>
-        </div>
-      </div>
+      </motion.div>
 
       {/* Filters */}
-      <div className="flex gap-2 overflow-x-auto pb-1 -mx-4 px-4 scrollbar-hide">
+      <motion.div variants={item} className="flex gap-2 overflow-x-auto pb-1 -mx-5 px-5 scrollbar-hide">
         {filters.map((f) => (
           <button
             key={f}
             onClick={() => setActiveFilter(f)}
-            className={`flex-shrink-0 rounded-full px-4 py-2 text-sm font-medium transition-all ${
+            className={`flex-shrink-0 rounded-full px-4 py-2 text-[12px] font-semibold transition-all duration-200 ${
               activeFilter === f
-                ? "bg-primary text-primary-foreground"
-                : "bg-muted text-muted-foreground hover:bg-muted/80"
+                ? "bg-primary text-primary-foreground shadow-sm"
+                : "bg-muted text-muted-foreground hover:bg-muted/70"
             }`}
           >
             {f}
           </button>
         ))}
-      </div>
+      </motion.div>
 
       {/* Summary */}
-      <div className="flex items-center gap-2 rounded-xl bg-primary/10 px-4 py-3">
-        <Filter className="h-4 w-4 text-primary" />
-        <span className="text-sm font-medium text-primary">
-          {nearbyMeals.length} options • Ranked by protein for your fat loss goal
+      <motion.div variants={item} className="flex items-center gap-2.5 rounded-2xl bg-primary/6 border border-primary/10 px-4 py-3">
+        <Filter className="h-4 w-4 text-primary flex-shrink-0" strokeWidth={2} />
+        <span className="text-[13px] font-medium text-primary">
+          {nearbyMeals.length} options • Ranked by protein for fat loss
         </span>
-      </div>
+      </motion.div>
 
       {/* Results */}
-      <motion.div
-        className="space-y-3"
-        initial="hidden"
-        animate="visible"
-        variants={{ visible: { transition: { staggerChildren: 0.05 } } }}
-      >
+      <div className="space-y-3">
         {nearbyMeals.map((meal, i) => (
           <motion.div
             key={meal.name}
-            initial={{ opacity: 0, y: 12 }}
+            initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: i * 0.05 }}
+            transition={{ delay: 0.2 + i * 0.06, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
           >
             <MealCard {...meal} rank={i + 1} />
           </motion.div>
         ))}
-      </motion.div>
-    </div>
+      </div>
+    </motion.div>
   );
 };
 
