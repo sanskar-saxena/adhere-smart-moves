@@ -15,9 +15,9 @@ const maxVal = Math.max(...weeklyAdherence);
 
 const impactItems = [
   { icon: Target, label: "Protein consistency", impact: "+18%", positive: true },
-  { icon: Utensils, label: "Eating out frequency", impact: "-12%", positive: false },
-  { icon: Moon, label: "Sleep quality", impact: "+9%", positive: true },
-  { icon: Brain, label: "Weekend discipline", impact: "-15%", positive: false },
+  { icon: Utensils, label: "Restaurant meals", impact: "-12%", positive: false },
+  { icon: Moon, label: "Sleep above 7 hours", impact: "+9%", positive: true },
+  { icon: Brain, label: "Weekend execution", impact: "-15%", positive: false },
 ];
 
 const Progress = () => (
