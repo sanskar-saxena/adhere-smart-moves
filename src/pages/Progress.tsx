@@ -5,8 +5,8 @@ import InsightCard from "@/components/adhere/InsightCard";
 const trendData = [
   { label: "Weight", value: "78.2", unit: "kg", change: "-1.8 kg", trend: "down", period: "4 wks" },
   { label: "Waist", value: "34.5", unit: "in", change: "-0.5 in", trend: "down", period: "4 wks" },
-  { label: "Adherence", value: "74", unit: "%", change: "+8%", trend: "up", period: "vs last mo" },
-  { label: "Protein", value: "128", unit: "g/day", change: "+15g", trend: "up", period: "avg" },
+  { label: "Adherence", value: "74", unit: "%", change: "+8%", trend: "up", period: "vs prev mo" },
+  { label: "Protein Hit Rate", value: "71", unit: "%", change: "+12%", trend: "up", period: "of days" },
 ];
 
 const weeklyAdherence = [65, 72, 80, 58, 85, 74, 90];
