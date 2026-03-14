@@ -116,10 +116,10 @@ const Landing = () => {
             </motion.p>
             <motion.div variants={fadeUp} custom={3} className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
               <Button variant="premium" size="xl" onClick={() => navigate("/onboarding")}>
-                Start For Free <ArrowRight className="ml-2 h-4 w-4" />
+                Get Your Plan <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
               <Button size="xl" variant="outline" onClick={() => document.getElementById("how")?.scrollIntoView({ behavior: "smooth" })}>
-                See How It Works
+                How It Works
               </Button>
             </motion.div>
             <motion.div variants={fadeUp} custom={4} className="mt-16 flex items-center justify-center gap-10 md:gap-14">
