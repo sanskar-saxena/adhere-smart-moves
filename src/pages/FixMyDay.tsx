@@ -65,7 +65,7 @@ const FixMyDay = () => {
               disabled={!selected}
               onClick={() => setShowPlan(true)}
             >
-              Fix My Day <ArrowRight className="ml-2 h-4 w-4" />
+              Recalibrate My Day <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
           </motion.div>
         ) : (
