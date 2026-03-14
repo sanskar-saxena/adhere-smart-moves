@@ -14,19 +14,19 @@ const fadeUp = {
 };
 
 const features = [
-  { icon: ScanLine, title: "Scan Any Menu", desc: "Photo a restaurant menu. Get ranked options for your goal in seconds." },
-  { icon: Wrench, title: "Fix Off-Plan Days", desc: "Ate too much? Missed a workout? Get a calm recovery plan, not guilt." },
-  { icon: Compass, title: "Protein Near You", desc: "High-protein meals nearby, filtered by budget, cuisine, and preference." },
-  { icon: TrendingUp, title: "Real Adherence", desc: "Track consistency over perfection. See what actually moves the needle." },
-  { icon: Brain, title: "AI Coach", desc: "Patterns like 'weekends break your cut' — surfaced and actionable." },
-  { icon: Shield, title: "Failure Prevention", desc: "At the exact moment you're about to slip, Adhere steps in." },
+  { icon: ScanLine, title: "Menu Intelligence", desc: "Photograph any restaurant menu. Get every dish ranked, scored, and explained for your specific goal — in under 3 seconds." },
+  { icon: Wrench, title: "Damage Control", desc: "Overate at lunch? Skipped the gym? Tell Adhere what happened. Get a recalibrated plan for the rest of the day, not a lecture." },
+  { icon: Compass, title: "Nearby Fallbacks", desc: "Find the highest-protein meal within your budget and walking distance. Filtered by cuisine, diet, and delivery speed." },
+  { icon: TrendingUp, title: "Adherence, Not Perfection", desc: "One number that captures how well you're executing in real life — eating out, traveling, recovering, and adapting." },
+  { icon: Brain, title: "Pattern Recognition", desc: "\"You overeat by 400 cal every Thursday night.\" Adhere finds the patterns you can't see and tells you before they repeat." },
+  { icon: Shield, title: "Intervention at the Moment of Failure", desc: "When you're staring at Swiggy at 11 PM, Adhere gives you a better option before you tap \"Order.\"" },
 ];
 
 const socialProof = [
-  { metric: "12k+", label: "Active users" },
-  { metric: "4.8★", label: "App rating" },
-  { metric: "89%", label: "Weekly adherence" },
-  { metric: "2.1M", label: "Meals scanned" },
+  { metric: "12k+", label: "Users on track" },
+  { metric: "4.8★", label: "App Store" },
+  { metric: "89%", label: "Avg. adherence" },
+  { metric: "2.1M", label: "Decisions made" },
 ];
 
 const pricingPlans = [
@@ -34,7 +34,7 @@ const pricingPlans = [
     name: "Free",
     price: "₹0",
     period: "forever",
-    features: ["3 menu scans / week", "Daily adherence score", "Basic meal suggestions", "Progress tracking"],
+    features: ["3 menu scans / week", "Daily adherence score", "Basic recovery plans", "Weight & waist tracking"],
     cta: "Start Free",
     highlighted: false,
   },
@@ -42,15 +42,15 @@ const pricingPlans = [
     name: "Pro",
     price: "₹299",
     period: "/month",
-    features: ["Unlimited menu scans", "AI coach insights", "Fix My Day engine", "Nearby protein finder", "Advanced analytics", "Priority support"],
-    cta: "Start 7-Day Trial",
+    features: ["Unlimited menu scans", "AI pattern recognition", "Full recovery engine", "Nearby protein finder", "Eating-out impact analysis", "Priority support"],
+    cta: "Try Pro Free for 7 Days",
     highlighted: true,
   },
   {
     name: "Coach",
     price: "₹999",
     period: "/month",
-    features: ["Everything in Pro", "1:1 coaching integration", "Team & client management", "Custom meal plans", "White-label reports", "API access"],
+    features: ["Everything in Pro", "1:1 coach integration", "Client adherence dashboards", "Custom protocol support", "White-label reporting", "API access"],
     cta: "Contact Sales",
     highlighted: false,
   },
