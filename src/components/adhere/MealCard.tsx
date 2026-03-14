@@ -13,25 +13,39 @@ interface MealCardProps {
 }
 
 const MealCard = ({ name, restaurant, calories, protein, price, tags = [], rank, confidence, recommended }: MealCardProps) => (
-  <div className={`relative rounded-xl border bg-card p-4 card-shadow transition-all hover:card-shadow-hover ${recommended ? "border-primary/30 bg-gradient-card" : "border-border"}`}>
+  <div
+    className={`group relative rounded-2xl border bg-card p-4.5 shadow-card transition-all duration-200 ease-spring hover:shadow-card-hover hover:-translate-y-0.5 ${
+      recommended ? "border-primary/25 bg-gradient-card ring-1 ring-primary/8" : "border-border"
+    }`}
+  >
     {rank && (
-      <div className="absolute -top-2 -left-2 flex h-7 w-7 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">
-        {rank}
+      <div className={`absolute -top-2.5 -left-2.5 flex h-7 w-7 items-center justify-center rounded-lg text-[11px] font-bold shadow-sm ${
+        rank === 1 ? "bg-gradient-primary text-primary-foreground" : "bg-secondary text-secondary-foreground border"
+      }`}>
+        #{rank}
       </div>
     )}
-    <div className="flex items-start justify-between gap-3">
+    <div className="flex items-start justify-between gap-4">
       <div className="flex-1 min-w-0">
-        <h4 className="font-semibold text-card-foreground truncate">{name}</h4>
-        {restaurant && <p className="text-sm text-muted-foreground">{restaurant}</p>}
-        <div className="mt-2 flex items-center gap-3 text-sm">
-          <span className="font-medium text-card-foreground">{calories} cal</span>
-          <span className="font-semibold text-primary">{protein}g protein</span>
-          {price && <span className="text-muted-foreground">{price}</span>}
+        <h4 className="font-semibold text-card-foreground text-[15px] tracking-tight truncate">{name}</h4>
+        {restaurant && <p className="text-[13px] text-muted-foreground mt-0.5">{restaurant}</p>}
+        <div className="mt-3 flex items-center gap-4">
+          <div className="flex items-center gap-1.5">
+            <span className="font-mono text-sm font-semibold text-card-foreground">{calories}</span>
+            <span className="text-2xs text-muted-foreground">cal</span>
+          </div>
+          <div className="flex items-center gap-1.5">
+            <span className="font-mono text-sm font-bold text-primary">{protein}g</span>
+            <span className="text-2xs text-muted-foreground">protein</span>
+          </div>
+          {price && (
+            <span className="font-mono text-sm text-muted-foreground">{price}</span>
+          )}
         </div>
         {tags.length > 0 && (
-          <div className="mt-2 flex flex-wrap gap-1.5">
+          <div className="mt-3 flex flex-wrap gap-1.5">
             {tags.map((tag) => (
-              <Badge key={tag} variant="secondary" className="text-xs font-medium">
+              <Badge key={tag} variant="secondary" className="text-2xs px-2 py-0.5">
                 {tag}
               </Badge>
             ))}
@@ -39,9 +53,12 @@ const MealCard = ({ name, restaurant, calories, protein, price, tags = [], rank,
         )}
       </div>
       {confidence !== undefined && (
-        <div className="flex flex-col items-center">
-          <div className="text-xs text-muted-foreground">Match</div>
-          <div className="text-lg font-bold text-primary">{confidence}%</div>
+        <div className="flex flex-col items-center rounded-xl bg-muted/60 px-3 py-2">
+          <span className="text-2xs text-muted-foreground font-medium uppercase tracking-label">Match</span>
+          <span className={`font-mono text-xl font-bold ${confidence >= 80 ? "text-primary" : confidence >= 50 ? "text-warning" : "text-muted-foreground"}`}>
+            {confidence}
+          </span>
+          <span className="text-2xs text-muted-foreground">%</span>
         </div>
       )}
     </div>

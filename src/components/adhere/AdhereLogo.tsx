@@ -6,19 +6,19 @@ interface AdhereLogoProps {
 }
 
 const sizes = {
-  sm: "text-lg",
+  sm: "text-xl",
   md: "text-2xl",
-  lg: "text-4xl",
+  lg: "text-display-sm md:text-display",
 };
 
 const AdhereLogo = ({ size = "md", className = "" }: AdhereLogoProps) => (
   <motion.span
-    className={`font-sans font-bold tracking-tight text-foreground ${sizes[size]} ${className}`}
-    initial={{ opacity: 0 }}
-    animate={{ opacity: 1 }}
-    transition={{ duration: 0.5 }}
+    className={`font-sans font-extrabold tracking-tight text-foreground select-none ${sizes[size]} ${className}`}
+    initial={{ opacity: 0, y: -4 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
   >
-    adhere<span className="text-primary">.</span>
+    adhere<span className="text-gradient-primary">.</span>
   </motion.span>
 );
 

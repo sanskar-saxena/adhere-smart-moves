@@ -7,8 +7,8 @@ const AppShell = () => (
     <div className="hidden md:block">
       <DesktopSidebar />
     </div>
-    <main className="pb-20 md:pb-0 md:pl-64">
-      <div className="mx-auto max-w-2xl px-4 py-6 md:py-8">
+    <main className="pb-24 md:pb-0 md:pl-64">
+      <div className="mx-auto max-w-2xl px-5 py-8 md:py-10">
         <Outlet />
       </div>
     </main>
