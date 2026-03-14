@@ -47,8 +47,8 @@ const Profile = () => (
     {/* Stats */}
     <motion.div variants={item} className="grid grid-cols-3 gap-3">
       {[
-        { label: "Streak", value: "12", unit: "days" },
-        { label: "Scans", value: "47", unit: "" },
+        { label: "Streak", value: "12", unit: "d" },
+        { label: "Decisions", value: "47", unit: "" },
         { label: "Adherence", value: "74", unit: "%" },
       ].map((stat) => (
         <div key={stat.label} className="rounded-2xl border bg-card p-3.5 shadow-card text-center">
