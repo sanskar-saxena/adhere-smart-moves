@@ -1,11 +1,21 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useNavigate } from "react-router-dom";
-import { ArrowRight, ArrowLeft, Check } from "lucide-react";
+import { ArrowRight, ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { slideInRight, SPRING_EASE } from "@/lib/motion";
 import AdhereLogo from "@/components/adhere/AdhereLogo";
+import OptionSelector, { type SelectionOption } from "@/components/adhere/OptionSelector";
 
-const steps = [
+interface OnboardingStep {
+  title: string;
+  subtitle: string;
+  key: string;
+  options: SelectionOption[];
+  multi?: boolean;
+}
+
+const steps: OnboardingStep[] = [
   {
     title: "What outcome do you want?",
     subtitle: "Everything we recommend is calibrated to this.",
@@ -74,6 +84,8 @@ const Onboarding = () => {
   const current = steps[step];
   const isMulti = current.multi;
   const currentSelections = selections[current.key] || [];
+  const canProceed = currentSelections.length > 0;
+  const isLast = step === steps.length - 1;
 
   const handleSelect = (id: string) => {
     if (isMulti) {
@@ -91,9 +103,6 @@ const Onboarding = () => {
     }
   };
 
-  const canProceed = currentSelections.length > 0;
-  const isLast = step === steps.length - 1;
-
   return (
     <div className="min-h-screen bg-background flex flex-col">
       <header className="flex items-center justify-between px-6 py-5">
@@ -109,50 +118,23 @@ const Onboarding = () => {
           <motion.div
             className="h-full bg-gradient-primary rounded-full"
             animate={{ width: `${((step + 1) / steps.length) * 100}%` }}
-            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.4, ease: SPRING_EASE }}
           />
         </div>
       </div>
 
       <div className="flex-1 flex flex-col justify-center px-6 py-10 max-w-lg mx-auto w-full">
         <AnimatePresence mode="wait">
-          <motion.div
-            key={step}
-            initial={{ opacity: 0, x: 24 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -24 }}
-            transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-          >
+          <motion.div key={step} variants={slideInRight} initial="hidden" animate="visible" exit="exit">
             <h1 className="text-foreground">{current.title}</h1>
             <p className="mt-2 text-[14px] text-muted-foreground">{current.subtitle}</p>
 
-            <div className={`mt-8 grid gap-3 ${current.options.length > 4 ? "grid-cols-2" : "grid-cols-1"}`}>
-              {current.options.map((opt) => {
-                const selected = currentSelections.includes(opt.id);
-                return (
-                  <button
-                    key={opt.id}
-                    onClick={() => handleSelect(opt.id)}
-                    className={`flex items-center gap-3.5 rounded-2xl border p-4.5 text-left transition-all duration-200 ease-spring active:scale-[0.97] ${
-                      selected
-                        ? "border-primary/25 bg-primary/5 shadow-card-hover ring-1 ring-primary/10"
-                        : "border-border bg-card shadow-card hover:shadow-card-hover hover:-translate-y-0.5"
-                    }`}
-                  >
-                    <span className="text-2xl">{opt.emoji}</span>
-                    <span className="font-medium text-[14px] text-card-foreground flex-1 tracking-tight">{opt.label}</span>
-                    {selected && (
-                      <motion.div
-                        initial={{ scale: 0 }}
-                        animate={{ scale: 1 }}
-                        className="flex h-5.5 w-5.5 items-center justify-center rounded-full bg-primary"
-                      >
-                        <Check className="h-3 w-3 text-primary-foreground" strokeWidth={3} />
-                      </motion.div>
-                    )}
-                  </button>
-                );
-              })}
+            <div className="mt-8">
+              <OptionSelector
+                options={current.options}
+                selected={currentSelections}
+                onSelect={handleSelect}
+              />
             </div>
           </motion.div>
         </AnimatePresence>
@@ -170,13 +152,7 @@ const Onboarding = () => {
             size="lg"
             className="flex-1"
             disabled={!canProceed}
-            onClick={() => {
-              if (isLast) {
-                navigate("/app");
-              } else {
-                setStep(step + 1);
-              }
-            }}
+            onClick={() => (isLast ? navigate("/app") : setStep(step + 1))}
           >
             {isLast ? "Build My Plan" : "Continue"} <ArrowRight className="ml-2 h-4 w-4" />
           </Button>

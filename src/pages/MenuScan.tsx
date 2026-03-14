@@ -1,7 +1,11 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Upload, Camera, Clipboard, Sparkles } from "lucide-react";
+import { Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { staggerContainer, fadeUpItem } from "@/lib/motion";
+import PageHeader from "@/components/adhere/PageHeader";
+import ScanUploader from "@/components/adhere/ScanUploader";
+import AlertBanner from "@/components/adhere/AlertBanner";
 import MealCard from "@/components/adhere/MealCard";
 
 const mockResults = [
@@ -16,41 +20,16 @@ const MenuScan = () => {
   const [scanned, setScanned] = useState(false);
 
   return (
-    <motion.div
-      className="space-y-5"
-      initial="hidden"
-      animate="visible"
-      variants={{ visible: { transition: { staggerChildren: 0.07 } } }}
-    >
-      <motion.div variants={{ hidden: { opacity: 0, y: 16 }, visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] as const } } }}>
-        <p className="text-[13px] text-muted-foreground font-medium">Decision Engine</p>
-        <h1 className="text-foreground mt-0.5">Scan a Menu</h1>
-        <p className="text-[12px] text-muted-foreground mt-0.5">Photo any menu. Every dish ranked for your goal in seconds.</p>
-      </motion.div>
+    <motion.div className="space-y-5" initial="hidden" animate="visible" variants={staggerContainer}>
+      <PageHeader
+        eyebrow="Decision Engine"
+        title="Scan a Menu"
+        description="Photo any menu. Every dish ranked for your goal in seconds."
+      />
 
       {!scanned ? (
-        <motion.div variants={{ hidden: { opacity: 0, y: 16 }, visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] as const } } }} className="space-y-3">
-          <div
-            onClick={() => setScanned(true)}
-            className="group rounded-3xl border-2 border-dashed border-border bg-muted/15 p-12 flex flex-col items-center justify-center gap-4 cursor-pointer hover:border-primary/30 hover:bg-primary/3 transition-all duration-300 active:scale-[0.99]"
-          >
-            <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-primary/8 transition-all duration-300 group-hover:bg-primary/14 group-hover:scale-105">
-              <Upload className="h-7 w-7 text-primary" strokeWidth={1.5} />
-            </div>
-            <div className="text-center">
-              <p className="font-semibold text-foreground text-[14px]">Drop a menu photo</p>
-              <p className="text-[12px] text-muted-foreground mt-1">Photo, screenshot, or delivery app screen</p>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-2 gap-2.5">
-            <Button variant="outline" size="lg" onClick={() => setScanned(true)} className="active:scale-[0.97]">
-              <Camera className="mr-2 h-4 w-4" /> Take Photo
-            </Button>
-            <Button variant="outline" size="lg" onClick={() => setScanned(true)} className="active:scale-[0.97]">
-              <Clipboard className="mr-2 h-4 w-4" /> Paste Menu
-            </Button>
-          </div>
+        <motion.div variants={fadeUpItem}>
+          <ScanUploader onScan={() => setScanned(true)} />
         </motion.div>
       ) : (
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.4 }} className="space-y-3">
@@ -61,13 +40,12 @@ const MenuScan = () => {
             </span>
           </div>
 
-          <div className="flex items-start gap-3 rounded-2xl border border-primary/10 bg-primary/4 p-4">
-            <span className="text-lg">💡</span>
-            <div>
-              <p className="text-[13px] font-semibold text-foreground">Order the grilled chicken, skip the butter chicken</p>
-              <p className="text-[12px] text-muted-foreground mt-0.5">Closes your protein gap and leaves room for a 150-cal dessert. The butter chicken blows your deficit.</p>
-            </div>
-          </div>
+          <AlertBanner
+            variant="info"
+            emoji="💡"
+            title="Order the grilled chicken, skip the butter chicken"
+            description="Closes your protein gap and leaves room for a 150-cal dessert. The butter chicken blows your deficit."
+          />
 
           <div className="space-y-2.5">
             {mockResults.map((meal, i) => (
