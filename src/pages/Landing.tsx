@@ -170,9 +170,9 @@ const Landing = () => {
       <section id="features" className="py-24 md:py-32 bg-muted/40">
         <div className="container">
           <motion.div className="text-center mb-18" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}>
-            <span className="section-label text-primary mb-3 block">Features</span>
-            <h2 className="text-foreground">Built for Real Life</h2>
-            <p className="mt-3 text-muted-foreground max-w-lg mx-auto text-[15px]">Not another calorie counter. Adhere helps at the exact moments you're about to fail.</p>
+            <span className="section-label text-primary mb-3 block">Capabilities</span>
+            <h2 className="text-foreground">Designed for the Moments You Usually Fail</h2>
+            <p className="mt-3 text-muted-foreground max-w-lg mx-auto text-[15px]">Not a food diary. Not a workout timer. An intelligent operating system for staying adherent when eating out, traveling, recovering, and making fast decisions under pressure.</p>
           </motion.div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 max-w-5xl mx-auto">
             {features.map((f, i) => (
