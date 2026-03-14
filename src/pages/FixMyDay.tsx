@@ -14,10 +14,10 @@ const situations = [
 ];
 
 const recoverySteps = [
-  "Have a light, high-protein dinner: ~400 cal, 35g+ protein",
-  "Skip the late-night snack — brush teeth early",
-  "Walk 20 min after dinner to offset",
-  "Go to bed by 11 PM to reset hunger hormones",
+  "Protein-first dinner: 400 cal max, 35g+ protein — close the gap, not the kitchen",
+  "No snacking after dinner — brush teeth now, remove the decision later",
+  "20-min walk post-dinner to bring down blood sugar and reclaim 100 cal",
+  "Lights out by 11 PM — sleep debt is the #1 predictor of tomorrow's overeating",
 ];
 
 const FixMyDay = () => {
