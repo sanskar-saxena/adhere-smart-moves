@@ -101,11 +101,11 @@ const Landing = () => {
             <motion.h1
               variants={fadeUp}
               custom={1}
-              className="text-display-sm md:text-display lg:text-display-lg font-extrabold text-foreground !leading-[1.08]"
+               className="text-display-sm md:text-display lg:text-display-lg font-extrabold text-foreground !leading-[1.08]"
             >
-              Stay on track
+              You know what to eat.
               <br />
-              <span className="text-gradient-primary">even when life gets messy.</span>
+              <span className="text-gradient-primary">You just can't do it in real life.</span>
             </motion.h1>
             <motion.p
               variants={fadeUp}
