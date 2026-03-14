@@ -29,9 +29,9 @@ const MenuScan = () => {
       variants={{ visible: { transition: { staggerChildren: 0.07 } } }}
     >
       <motion.div variants={item}>
-        <span className="section-label text-primary mb-1 block">AI Scanner</span>
-        <h1 className="text-foreground">Menu Scan</h1>
-        <p className="text-[13px] text-muted-foreground mt-1">Upload a menu photo and get ranked options for your goal.</p>
+        <span className="section-label text-primary mb-1 block">Decision Engine</span>
+        <h1 className="text-foreground">Scan a Menu</h1>
+        <p className="text-[13px] text-muted-foreground mt-1">Drop a photo of any restaurant menu. Every dish ranked and explained for your goal in seconds.</p>
       </motion.div>
 
       {!scanned ? (
