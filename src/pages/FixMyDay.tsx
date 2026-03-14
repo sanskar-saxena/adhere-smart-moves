@@ -5,12 +5,12 @@ import { Button } from "@/components/ui/button";
 import InsightCard from "@/components/adhere/InsightCard";
 
 const situations = [
-  { id: "overate", label: "I already ate too much", emoji: "🍕" },
-  { id: "missed", label: "I missed my workout", emoji: "🛋️" },
-  { id: "going-out", label: "I'm going out tonight", emoji: "🍻" },
-  { id: "craving", label: "I'm craving junk food", emoji: "🍫" },
-  { id: "tired", label: "I barely slept", emoji: "😴" },
-  { id: "travel", label: "I'm traveling today", emoji: "✈️" },
+  { id: "overate", label: "I went over my calories", emoji: "🍕" },
+  { id: "missed", label: "I skipped my workout", emoji: "🛋️" },
+  { id: "going-out", label: "I have dinner plans tonight", emoji: "🍻" },
+  { id: "craving", label: "I'm about to order junk", emoji: "🍫" },
+  { id: "tired", label: "I slept badly, everything's harder", emoji: "😴" },
+  { id: "travel", label: "I'm on the road today", emoji: "✈️" },
 ];
 
 const recoverySteps = [
