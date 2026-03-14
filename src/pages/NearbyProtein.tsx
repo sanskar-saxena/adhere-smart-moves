@@ -35,7 +35,7 @@ const NearbyProtein = () => {
             <Compass className="h-[18px] w-[18px] text-primary" strokeWidth={1.8} />
           </div>
           <div>
-            <h1 className="text-foreground">Nearby Protein</h1>
+            <h1 className="text-foreground">Nearby Fallbacks</h1>
             <div className="flex items-center gap-1 text-2xs text-muted-foreground mt-0.5">
               <MapPin className="h-3 w-3" />
               <span>Koramangala, Bangalore</span>
