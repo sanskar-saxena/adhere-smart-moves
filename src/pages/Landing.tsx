@@ -138,14 +138,14 @@ const Landing = () => {
       <section id="how" className="py-24 md:py-32">
         <div className="container">
           <motion.div className="text-center mb-18" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}>
-            <span className="section-label text-primary mb-3 block">How It Works</span>
-            <h2 className="text-foreground">Three steps to never fall off track</h2>
+            <span className="section-label text-primary mb-3 block">The Process</span>
+            <h2 className="text-foreground">Most people fail between meals, not during workouts</h2>
           </motion.div>
           <div className="grid md:grid-cols-3 gap-10 max-w-4xl mx-auto">
             {[
-              { step: "01", title: "Tell us your goal", desc: "Fat loss, muscle gain, recomp, or maintenance. Plus your lifestyle, diet, and budget." },
-              { step: "02", title: "Live your life", desc: "Eat out, travel, get busy. When you're about to order, scan the menu or ask for help." },
-              { step: "03", title: "Stay adherent", desc: "Get the best next move, recover from slip-ups, and watch your adherence score climb." },
+              { step: "01", title: "Set your target", desc: "Fat loss, muscle gain, or recomp. Add your food preferences, budget, eating-out habits, and the situations where you usually fall off." },
+              { step: "02", title: "Make real-life decisions", desc: "At a restaurant? Scan the menu. Overate? Hit Fix My Day. Craving junk? Get an alternative. Every decision is guided, not guessed." },
+              { step: "03", title: "Watch adherence compound", desc: "Your score improves as you make better calls in harder moments. Not gym selfies — real execution in the situations that used to derail you." },
             ].map((item, i) => (
               <motion.div
                 key={item.step}
