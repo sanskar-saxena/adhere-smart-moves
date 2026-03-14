@@ -6,12 +6,12 @@ import MealCard from "@/components/adhere/MealCard";
 const filters = ["All", "Under ₹200", "Veg Only", "High Protein", "Delivery"];
 
 const nearbyMeals = [
-  { name: "Grilled Chicken Wrap", restaurant: "Protein Point • 0.3 km", calories: 350, protein: 38, price: "₹180", tags: ["delivery", "high protein"], confidence: 95, recommended: true },
-  { name: "Egg Bhurji + 2 Roti", restaurant: "Sagar Kitchen • 0.5 km", calories: 380, protein: 24, price: "₹120", tags: ["under ₹200", "eggetarian"], confidence: 78 },
-  { name: "Soya Chunk Bowl", restaurant: "Green Bites • 0.8 km", calories: 320, protein: 28, price: "₹150", tags: ["veg", "high protein"], confidence: 82 },
-  { name: "Double Egg Sandwich", restaurant: "Toast & Co • 0.4 km", calories: 290, protein: 22, price: "₹100", tags: ["under ₹200", "quick"], confidence: 72 },
-  { name: "Chicken Tikka + Salad", restaurant: "Fit Meals • 1.2 km", calories: 420, protein: 44, price: "₹250", tags: ["best for cut", "delivery"], confidence: 91 },
-  { name: "Paneer Bhurji", restaurant: "Desi Tadka • 0.6 km", calories: 340, protein: 22, price: "₹130", tags: ["veg", "under ₹200"], confidence: 68 },
+  { name: "Grilled Chicken Wrap", restaurant: "Protein Point • 0.3 km", calories: 350, protein: 38, price: "₹180", tags: ["delivery ready", "closes your gap"], confidence: 95, recommended: true },
+  { name: "Egg Bhurji + 2 Roti", restaurant: "Sagar Kitchen • 0.5 km", calories: 380, protein: 24, price: "₹120", tags: ["under budget", "eggetarian"], confidence: 78 },
+  { name: "Soya Chunk Bowl", restaurant: "Green Bites • 0.8 km", calories: 320, protein: 28, price: "₹150", tags: ["veg", "solid protein"], confidence: 82 },
+  { name: "Double Egg Sandwich", restaurant: "Toast & Co • 0.4 km", calories: 290, protein: 22, price: "₹100", tags: ["cheapest option", "grab & go"], confidence: 72 },
+  { name: "Chicken Tikka + Salad", restaurant: "Fit Meals • 1.2 km", calories: 420, protein: 44, price: "₹250", tags: ["top pick for cut", "delivery"], confidence: 91 },
+  { name: "Paneer Bhurji", restaurant: "Desi Tadka • 0.6 km", calories: 340, protein: 22, price: "₹130", tags: ["veg", "under budget"], confidence: 68 },
 ];
 
 const item = {
