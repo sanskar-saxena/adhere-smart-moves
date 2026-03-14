@@ -70,8 +70,8 @@ const Home = () => {
 
       {/* Risk Alerts */}
       <motion.div variants={item} className="space-y-3">
-        <InsightCard type="warning" title="Under-protein today" description="You've had 95g of 140g target. Focus on protein in your next meal." />
-        <InsightCard type="alert" title="Late-night risk" description="Based on your patterns, you tend to order late on Thursdays. Plan ahead." />
+        <InsightCard type="warning" title="Protein gap widening" description="95g of 140g target consumed. Your next meal needs to be protein-first or you'll miss today's target." />
+        <InsightCard type="alert" title="Thursday night pattern detected" description="You've ordered delivery past 10 PM on 3 of the last 4 Thursdays. Decide dinner now before the craving hits." />
       </motion.div>
 
       {/* Quick Actions */}
