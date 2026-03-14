@@ -95,7 +95,7 @@ const Landing = () => {
             <motion.div variants={fadeUp} custom={0}>
               <span className="inline-flex items-center gap-2.5 rounded-full border border-border/60 bg-card/80 backdrop-blur-sm px-4 py-2 text-[13px] font-medium text-muted-foreground shadow-card mb-8">
                 <Sparkles className="h-3.5 w-3.5 text-primary" />
-                Now in early access
+                Early access — 12,000+ users staying on track
               </span>
             </motion.div>
             <motion.h1
