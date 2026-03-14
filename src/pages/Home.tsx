@@ -100,10 +100,10 @@ const Home = () => {
           <p className="text-[13px] text-muted-foreground">Push — Chest, Shoulders, Triceps · ~45 min</p>
           <div className="mt-4 flex gap-2.5">
             <button className="flex-1 rounded-xl bg-primary/8 py-2.5 text-[13px] font-semibold text-primary transition-all duration-200 hover:bg-primary/14 active:scale-[0.97]">
-              Start Workout
+              Mark Done
             </button>
             <button className="flex-1 rounded-xl bg-muted py-2.5 text-[13px] font-semibold text-muted-foreground transition-all duration-200 hover:bg-muted/70 active:scale-[0.97]">
-              Skip Today
+              Swap or Skip
             </button>
           </div>
         </div>
