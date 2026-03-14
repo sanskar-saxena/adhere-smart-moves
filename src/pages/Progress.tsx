@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import { TrendingDown, TrendingUp, Target, Utensils, Moon, Brain } from "lucide-react";
-import InsightCard from "@/components/adhere/InsightCard";
 
 const trendData = [
   { label: "Weight", value: "78.2", unit: "kg", change: "-1.8 kg", trend: "down", period: "4 wks" },
@@ -10,7 +9,7 @@ const trendData = [
 ];
 
 const weeklyAdherence = [65, 72, 80, 58, 85, 74, 90];
-const days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+const days = ["M", "T", "W", "T", "F", "S", "S"];
 const maxVal = Math.max(...weeklyAdherence);
 
 const impactItems = [
@@ -20,105 +19,116 @@ const impactItems = [
   { icon: Brain, label: "Weekend execution", impact: "-15%", positive: false },
 ];
 
+const item = {
+  hidden: { opacity: 0, y: 16 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] as const } },
+};
+
 const Progress = () => (
   <motion.div
-    className="space-y-7"
+    className="space-y-5"
     initial="hidden"
     animate="visible"
     variants={{ visible: { transition: { staggerChildren: 0.07 } } }}
   >
-    <motion.div variants={{ hidden: { opacity: 0, y: 16 }, visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] as const } } }}>
-      <span className="section-label text-primary mb-1 block">Execution Trends</span>
-      <h1 className="text-foreground">Progress</h1>
-      <p className="text-[13px] text-muted-foreground mt-1">What's working, what's not, and what to change this week.</p>
+    <motion.div variants={item}>
+      <p className="text-[13px] text-muted-foreground font-medium">Execution Trends</p>
+      <h1 className="text-foreground mt-0.5">What's Working</h1>
     </motion.div>
 
     {/* Trend Cards */}
-    <div className="grid grid-cols-2 gap-3">
-      {trendData.map((item, i) => (
+    <div className="grid grid-cols-2 gap-2.5">
+      {trendData.map((t, i) => (
         <motion.div
-          key={item.label}
-          className="rounded-2xl border bg-card p-4.5 shadow-card"
+          key={t.label}
+          className="rounded-2xl border bg-card p-4 shadow-card"
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: i * 0.06, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ delay: i * 0.05, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
         >
-          <span className="section-label">{item.label}</span>
-          <div className="mt-2 flex items-baseline gap-1.5">
-            <span className="font-mono text-[1.75rem] font-bold text-foreground tracking-tight leading-none">{item.value}</span>
-            <span className="text-xs text-muted-foreground font-medium">{item.unit}</span>
+          <span className="text-[10px] font-semibold uppercase tracking-[0.08em] text-muted-foreground">{t.label}</span>
+          <div className="mt-1.5 flex items-baseline gap-1">
+            <span className="font-mono text-[1.5rem] font-bold text-foreground tracking-tight leading-none">{t.value}</span>
+            <span className="text-[11px] text-muted-foreground">{t.unit}</span>
           </div>
-          <div className="mt-2 flex items-center gap-1.5">
-            {item.trend === "down" ? (
-              <TrendingDown className="h-3.5 w-3.5 text-success" strokeWidth={2.5} />
+          <div className="mt-1.5 flex items-center gap-1">
+            {t.trend === "down" ? (
+              <TrendingDown className="h-3 w-3 text-success" strokeWidth={2.5} />
             ) : (
-              <TrendingUp className="h-3.5 w-3.5 text-success" strokeWidth={2.5} />
+              <TrendingUp className="h-3 w-3 text-success" strokeWidth={2.5} />
             )}
-            <span className="text-2xs font-semibold text-success">{item.change}</span>
-            <span className="text-2xs text-muted-foreground">{item.period}</span>
+            <span className="text-[11px] font-semibold text-success">{t.change}</span>
+            <span className="text-[10px] text-muted-foreground">{t.period}</span>
           </div>
         </motion.div>
       ))}
     </div>
 
     {/* Weekly Adherence */}
-    <motion.div
-      className="rounded-3xl border bg-card p-6 shadow-card"
-      initial={{ opacity: 0, y: 16 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: 0.3, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-    >
-      <div className="flex items-center justify-between mb-6">
-        <h3 className="font-semibold text-card-foreground text-[15px]">Adherence by Day</h3>
-        <span className="text-2xs text-muted-foreground font-medium uppercase tracking-label">This Week</span>
+    <motion.div variants={item} className="rounded-2xl border bg-card p-5 shadow-card">
+      <div className="flex items-center justify-between mb-4">
+        <span className="text-[13px] font-semibold text-card-foreground">This Week</span>
+        <span className="text-[10px] font-semibold text-muted-foreground uppercase tracking-[0.08em]">Adherence by Day</span>
       </div>
-      <div className="flex items-end justify-between gap-3 h-36">
+      <div className="flex items-end justify-between gap-2 h-28">
         {weeklyAdherence.map((val, i) => {
           const height = (val / maxVal) * 100;
+          const isLow = val === Math.min(...weeklyAdherence);
           const color = val >= 75 ? "bg-primary" : val >= 50 ? "bg-warning" : "bg-destructive/50";
           return (
-            <div key={i} className="flex-1 flex flex-col items-center gap-2">
-              <span className="font-mono text-2xs font-semibold text-muted-foreground">{val}</span>
-              <div className="w-full relative rounded-xl bg-muted/50 overflow-hidden" style={{ height: '100%' }}>
+            <div key={i} className="flex-1 flex flex-col items-center gap-1.5">
+              <span className="font-mono text-[10px] font-semibold text-muted-foreground">{val}</span>
+              <div className="w-full rounded-lg bg-muted/40 overflow-hidden relative" style={{ height: '100%' }}>
                 <motion.div
-                  className={`absolute bottom-0 left-0 right-0 rounded-xl ${color}`}
+                  className={`absolute bottom-0 left-0 right-0 rounded-lg ${color}`}
                   initial={{ height: 0 }}
                   animate={{ height: `${height}%` }}
-                  transition={{ delay: 0.4 + i * 0.06, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                  transition={{ delay: 0.3 + i * 0.05, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
                 />
               </div>
-              <span className={`text-2xs font-medium ${val === Math.min(...weeklyAdherence) ? "text-destructive" : "text-muted-foreground"}`}>{days[i]}</span>
+              <span className={`text-[10px] font-semibold ${isLow ? "text-destructive" : "text-muted-foreground"}`}>{days[i]}</span>
             </div>
           );
         })}
       </div>
     </motion.div>
 
-    {/* AI Insights */}
-    <div className="space-y-3">
-      <h3 className="section-label">What Adhere Sees</h3>
-      <InsightCard type="warning" title="Saturdays are costing you" description="Your Saturday adherence averages 52%. That single day is responsible for 40% of your weekly calorie surplus. Pre-decide Saturday meals by Friday night." />
-      <InsightCard type="tip" title="Office canteen → +300 cal" description="You exceed your target by ~300 cal on days you eat at the canteen. Two packed lunches per week would close this gap." />
-      <InsightCard type="positive" title="Sleep is your biggest lever" description="On days you sleep 7+ hours, your adherence is 23% higher and your protein consistency doubles. This is your single highest-ROI habit." />
-    </div>
+    {/* AI Pattern Insights */}
+    <motion.div variants={item} className="space-y-2">
+      <p className="text-[11px] font-bold uppercase tracking-[0.1em] text-muted-foreground">What Adhere Sees</p>
+      {[
+        { emoji: "📉", title: "Saturdays cost you the most", desc: "52% avg adherence. Responsible for 40% of your weekly surplus. Pre-decide meals by Friday." },
+        { emoji: "🏢", title: "Office canteen adds +300 cal", desc: "You exceed targets on canteen days. Two packed lunches per week closes this gap." },
+        { emoji: "😴", title: "Sleep is your biggest lever", desc: "7+ hour nights → 23% higher adherence and 2× protein consistency." },
+      ].map((insight, i) => (
+        <motion.div
+          key={i}
+          className="flex items-start gap-3 rounded-2xl border bg-card p-4 shadow-card"
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.4 + i * 0.06, duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <span className="text-lg mt-0.5">{insight.emoji}</span>
+          <div>
+            <p className="text-[13px] font-semibold text-card-foreground leading-snug">{insight.title}</p>
+            <p className="text-[12px] text-muted-foreground mt-0.5 leading-relaxed">{insight.desc}</p>
+          </div>
+        </motion.div>
+      ))}
+    </motion.div>
 
     {/* Impact Breakdown */}
-    <motion.div
-      className="rounded-3xl border bg-card p-6 shadow-card"
-      initial={{ opacity: 0, y: 16 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: 0.5, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-    >
-      <h3 className="font-semibold text-card-foreground text-[15px] mb-5">Impact on Your Adherence Score</h3>
-      <div className="space-y-4">
-        {impactItems.map((item) => (
-          <div key={item.label} className="flex items-center gap-3.5">
-            <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-muted/70">
-              <item.icon className="h-[18px] w-[18px] text-muted-foreground" strokeWidth={1.8} />
+    <motion.div variants={item} className="rounded-2xl border bg-card p-5 shadow-card">
+      <p className="text-[13px] font-semibold text-card-foreground mb-4">Impact on Adherence Score</p>
+      <div className="space-y-3.5">
+        {impactItems.map((imp) => (
+          <div key={imp.label} className="flex items-center gap-3">
+            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-muted/60">
+              <imp.icon className="h-4 w-4 text-muted-foreground" strokeWidth={1.8} />
             </div>
-            <span className="flex-1 text-[13px] font-medium text-card-foreground">{item.label}</span>
-            <span className={`font-mono text-[13px] font-bold ${item.positive ? "text-success" : "text-destructive"}`}>
-              {item.impact}
+            <span className="flex-1 text-[13px] text-card-foreground">{imp.label}</span>
+            <span className={`font-mono text-[13px] font-bold ${imp.positive ? "text-success" : "text-destructive"}`}>
+              {imp.impact}
             </span>
           </div>
         ))}
