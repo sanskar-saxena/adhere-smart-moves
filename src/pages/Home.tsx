@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { ScanLine, Wrench, Compass, ArrowRight, Zap } from "lucide-react";
@@ -9,9 +9,19 @@ import AlertBanner from "@/components/adhere/AlertBanner";
 import ActionStrip from "@/components/adhere/ActionStrip";
 import CollapsibleSection from "@/components/adhere/CollapsibleSection";
 import StatBlock from "@/components/adhere/StatBlock";
+import { DashboardSkeleton } from "@/components/adhere/Skeletons";
+import ErrorState from "@/components/adhere/ErrorState";
 
 const Home = () => {
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
+
+  useEffect(() => {
+    // Simulate initial data fetch
+    const t = setTimeout(() => setLoading(false), 1200);
+    return () => clearTimeout(t);
+  }, []);
 
   const timeGreeting = () => {
     const h = new Date().getHours();
@@ -25,6 +35,18 @@ const Home = () => {
     { icon: ScanLine, label: "Scan a Menu", sublabel: "Get ranked options", onClick: () => navigate("/app/scan") },
     { icon: Compass, label: "Nearby Protein", sublabel: "Under ₹200", onClick: () => navigate("/app/nearby") },
   ];
+
+  if (error) {
+    return (
+      <ErrorState
+        title="Couldn't load your dashboard"
+        description="We're having trouble fetching your data. Your progress is safe — try again in a moment."
+        onRetry={() => { setError(false); setLoading(true); setTimeout(() => setLoading(false), 1200); }}
+      />
+    );
+  }
+
+  if (loading) return <DashboardSkeleton />;
 
   return (
     <motion.div className="space-y-5" initial="hidden" animate="visible" variants={staggerContainer}>
@@ -65,18 +87,8 @@ const Home = () => {
 
       {/* Risk Alerts */}
       <motion.div variants={fadeUpItem} className="space-y-2">
-        <AlertBanner
-          variant="warning"
-          emoji="⚠️"
-          title="Thursday night pattern detected"
-          description="You've ordered delivery past 10 PM on 3 of the last 4 Thursdays. Decide dinner now."
-        />
-        <AlertBanner
-          variant="danger"
-          emoji="🥩"
-          title="Protein gap widening"
-          description="95g of 140g consumed. Your next meal needs to be protein-first."
-        />
+        <AlertBanner variant="warning" emoji="⚠️" title="Thursday night pattern detected" description="You've ordered delivery past 10 PM on 3 of the last 4 Thursdays. Decide dinner now." />
+        <AlertBanner variant="danger" emoji="🥩" title="Protein gap widening" description="95g of 140g consumed. Your next meal needs to be protein-first." />
       </motion.div>
 
       {/* Quick Actions */}
@@ -106,12 +118,7 @@ const Home = () => {
 
       {/* Streak */}
       <motion.div variants={fadeUpItem}>
-        <AlertBanner
-          variant="success"
-          emoji="🎯"
-          title="3-day protein streak"
-          description="Closed your protein gap 3 days running. That's directly accelerating your cut."
-        />
+        <AlertBanner variant="success" emoji="🎯" title="3-day protein streak" description="Closed your protein gap 3 days running. That's directly accelerating your cut." />
       </motion.div>
 
       {/* Training Intent */}
@@ -125,12 +132,8 @@ const Home = () => {
             </div>
           </div>
           <div className="flex gap-2">
-            <button className="rounded-xl bg-primary/8 px-3.5 py-2 text-[12px] font-semibold text-primary hover:bg-primary/14 transition-colors active:scale-[0.97]">
-              Done
-            </button>
-            <button className="rounded-xl bg-muted px-3.5 py-2 text-[12px] font-semibold text-muted-foreground hover:bg-muted/70 transition-colors active:scale-[0.97]">
-              Skip
-            </button>
+            <button className="rounded-xl bg-primary/8 px-3.5 py-2 text-[12px] font-semibold text-primary hover:bg-primary/14 transition-colors active:scale-[0.97]">Done</button>
+            <button className="rounded-xl bg-muted px-3.5 py-2 text-[12px] font-semibold text-muted-foreground hover:bg-muted/70 transition-colors active:scale-[0.97]">Skip</button>
           </div>
         </div>
       </motion.div>

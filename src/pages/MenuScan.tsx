@@ -1,12 +1,17 @@
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { motion } from "framer-motion";
-import { Sparkles } from "lucide-react";
+import { Sparkles, ScanLine, WifiOff } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { staggerContainer, fadeUpItem } from "@/lib/motion";
 import PageHeader from "@/components/adhere/PageHeader";
 import ScanUploader from "@/components/adhere/ScanUploader";
+import ScanProcessing from "@/components/adhere/ScanProcessing";
+import UploadProgress from "@/components/adhere/UploadProgress";
 import AlertBanner from "@/components/adhere/AlertBanner";
 import MealCard from "@/components/adhere/MealCard";
+import EmptyState from "@/components/adhere/EmptyState";
+import ErrorState from "@/components/adhere/ErrorState";
+import { MealListSkeleton } from "@/components/adhere/Skeletons";
 
 const mockResults = [
   { name: "Grilled Chicken Breast", restaurant: "The Health Bowl", calories: 380, protein: 42, price: "₹280", tags: ["best for your cut", "highest protein/cal"], rank: 1, confidence: 96, recommended: true },
@@ -16,8 +21,50 @@ const mockResults = [
   { name: "Butter Chicken + Naan", restaurant: "The Health Bowl", calories: 780, protein: 35, price: "₹350", tags: ["will blow your deficit"], rank: 5, confidence: 30 },
 ];
 
+type ScanState = "idle" | "uploading" | "processing" | "done" | "error" | "partial";
+
 const MenuScan = () => {
-  const [scanned, setScanned] = useState(false);
+  const [state, setState] = useState<ScanState>("idle");
+  const [uploadProgress, setUploadProgress] = useState(0);
+  const [scanProgress, setScanProgress] = useState(0);
+  const [visibleResults, setVisibleResults] = useState(mockResults);
+
+  const simulateUpload = useCallback(() => {
+    setState("uploading");
+    setUploadProgress(0);
+    const interval = setInterval(() => {
+      setUploadProgress((p) => {
+        if (p >= 100) {
+          clearInterval(interval);
+          setState("processing");
+          return 100;
+        }
+        return p + Math.random() * 18 + 4;
+      });
+    }, 120);
+  }, []);
+
+  useEffect(() => {
+    if (state !== "processing") return;
+    setScanProgress(0);
+    const interval = setInterval(() => {
+      setScanProgress((p) => {
+        if (p >= 100) {
+          clearInterval(interval);
+          setState("done");
+          return 100;
+        }
+        return p + Math.random() * 8 + 2;
+      });
+    }, 150);
+    return () => clearInterval(interval);
+  }, [state]);
+
+  const handleRetry = () => {
+    setState("idle");
+    setUploadProgress(0);
+    setScanProgress(0);
+  };
 
   return (
     <motion.div className="space-y-5" initial="hidden" animate="visible" variants={staggerContainer}>
@@ -27,11 +74,43 @@ const MenuScan = () => {
         description="Photo any menu. Every dish ranked for your goal in seconds."
       />
 
-      {!scanned ? (
+      {/* ─── IDLE: Upload zone ─── */}
+      {state === "idle" && (
         <motion.div variants={fadeUpItem}>
-          <ScanUploader onScan={() => setScanned(true)} />
+          <ScanUploader onScan={simulateUpload} />
         </motion.div>
-      ) : (
+      )}
+
+      {/* ─── UPLOADING: File progress ─── */}
+      {state === "uploading" && (
+        <motion.div variants={fadeUpItem} className="space-y-3">
+          <UploadProgress
+            fileName="restaurant-menu.jpg"
+            progress={Math.min(uploadProgress, 100)}
+            status="uploading"
+            onRemove={handleRetry}
+          />
+        </motion.div>
+      )}
+
+      {/* ─── PROCESSING: Scan animation ─── */}
+      {state === "processing" && (
+        <motion.div variants={fadeUpItem}>
+          <ScanProcessing progress={Math.min(scanProgress, 100)} />
+        </motion.div>
+      )}
+
+      {/* ─── ERROR: Graceful failure ─── */}
+      {state === "error" && (
+        <ErrorState
+          title="Couldn't read this menu"
+          description="The image was too blurry or the format isn't supported. Try a clearer photo or paste the menu text instead."
+          onRetry={handleRetry}
+        />
+      )}
+
+      {/* ─── DONE: Full results ─── */}
+      {state === "done" && (
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.4 }} className="space-y-3">
           <div className="flex items-center gap-2.5 rounded-2xl bg-primary/6 border border-primary/10 px-4 py-3">
             <Sparkles className="h-4 w-4 text-primary flex-shrink-0" strokeWidth={2} />
@@ -48,7 +127,7 @@ const MenuScan = () => {
           />
 
           <div className="space-y-2.5">
-            {mockResults.map((meal, i) => (
+            {visibleResults.map((meal, i) => (
               <motion.div
                 key={meal.name}
                 initial={{ opacity: 0, y: 12 }}
@@ -67,7 +146,7 @@ const MenuScan = () => {
             </p>
           </div>
 
-          <Button variant="outline" className="w-full" onClick={() => setScanned(false)}>
+          <Button variant="outline" className="w-full" onClick={handleRetry}>
             Scan Another Menu
           </Button>
         </motion.div>
