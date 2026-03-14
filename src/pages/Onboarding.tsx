@@ -29,14 +29,14 @@ const steps = [
     ],
   },
   {
-    title: "Food preference?",
-    subtitle: "We respect every dietary choice.",
+    title: "What do you eat?",
+    subtitle: "Affects which meals and restaurants we recommend.",
     key: "diet",
     options: [
-      { id: "nonveg", label: "Non-Vegetarian", emoji: "🍗" },
+      { id: "nonveg", label: "Everything — no restrictions", emoji: "🍗" },
       { id: "veg", label: "Vegetarian", emoji: "🥬" },
-      { id: "egg", label: "Eggetarian", emoji: "🥚" },
-      { id: "vegan", label: "Vegan", emoji: "🌱" },
+      { id: "egg", label: "Egg-based, no meat", emoji: "🥚" },
+      { id: "vegan", label: "Plant-only", emoji: "🌱" },
     ],
   },
   {
