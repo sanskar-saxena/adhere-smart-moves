@@ -76,7 +76,7 @@ const FixMyDay = () => {
               <p className="font-semibold text-lg tracking-tight">Damage is contained. Here's how to close the day strong.</p>
             </div>
 
-            <InsightCard type="positive" title="You're not off track" description="One meal doesn't ruin a week. Your adherence score adjusts for real-life slip-ups." />
+            <InsightCard type="positive" title="This isn't failure — it's a data point" description="One over-meal doesn't break your cut. Your adherence score weights the whole week, not one sitting. Execute the next 4 hours well and today still counts." />
 
             <div className="space-y-2.5">
               {recoverySteps.map((step, i) => (
