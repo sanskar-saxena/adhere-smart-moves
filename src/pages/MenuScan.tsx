@@ -68,7 +68,7 @@ const MenuScan = () => {
           <div className="flex items-center gap-2.5 rounded-2xl bg-primary/6 border border-primary/10 px-4 py-3">
             <Sparkles className="h-4 w-4 text-primary flex-shrink-0" strokeWidth={2} />
             <span className="text-[13px] font-medium text-primary">
-              Ranked for your fat loss goal • 820 cal remaining
+              Ranked for fat loss · 820 cal remaining · protein-priority mode
             </span>
           </div>
 
